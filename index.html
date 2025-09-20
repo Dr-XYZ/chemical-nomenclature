@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <title>化學英文命名練習</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f5f9;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 420px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+    .options {
+      display: grid;
+      gap: 0.8rem;
+    }
+    button.option {
+      padding: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.15s, background 0.2s;
+    }
+    button.option:hover {
+      background: #e0e0e0;
+      transform: scale(1.03);
+    }
+    .correct { background: #a6e3a1 !important; }
+    .wrong { background: #f6a6a6 !important; }
+    .progress-bar {
+      margin-top: 1rem;
+      height: 12px;
+      background: #ddd;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #4a90e2;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .footer {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+    .hidden { display: none; }
+    select {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    button.control {
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #4a90e2;
+      color: white;
+      cursor: pointer;
+    }
+    .end-screen {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>化學英文命名練習</h1>
+    <select id="categorySelect"></select>
+    <div id="quiz" class="hidden">
+      <h2 id="question">題目載入中...</h2>
+      <div class="options" id="options"></div>
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="footer">
+        <span id="progress">0/0</span>
+        <span id="score">分數: 0</span>
+      </div>
+      <button class="control" onclick="showHint()">提示</button>
+      <div id="endScreen" class="end-screen hidden"></div>
+    </div>
+  </div>
+
+  <script>
+    let allData = [];
+    let quizData = [];
+    let wrongQuestions = [];
+    let current = 0, correct = 0, score = 0;
+    let hintUsed = false;
+
+    async function loadCSV() {
+      const response = await fetch("questions.csv");
+      const text = await response.text();
+      const rows = text.trim().split("\n").slice(1);
+      allData = rows.map(row => {
+        const cols = row.split(",");
+        return {
+          category: cols[0],
+          q: cols[1],
+          a: cols[2],
+          options: cols.slice(3)
+        };
+      });
+      initCategorySelect();
+    }
+
+    function initCategorySelect() {
+      const select = document.getElementById("categorySelect");
+      const categories = [...new Set(allData.map(d => d.category))];
+      select.innerHTML = "<option value=''>請選擇題庫分類</option>" +
+        categories.map(c => `<option value="${c}">${c}</option>`).join("");
+      select.onchange = () => startQuiz(select.value);
+    }
+
+    function startQuiz(category, useWrong = false) {
+      if (!category && !useWrong) return;
+      quizData = useWrong ? wrongQuestions : allData.filter(d => d.category === category);
+      current = 0; correct = 0; score = 0; wrongQuestions = [];
+      document.getElementById("quiz").classList.remove("hidden");
+      document.getElementById("endScreen").classList.add("hidden");
+      loadQuestion();
+    }
+
+    function loadQuestion() {
+      const data = quizData[current];
+      document.getElementById("question").innerText = `題目：${data.q}`;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+      hintUsed = false;
+
+      data.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "option";
+        btn.innerText = opt;
+        btn.onclick = () => checkAnswer(btn, opt);
+        optionsDiv.appendChild(btn);
+      });
+      updateProgress();
+    }
+
+    function checkAnswer(btn, answer) {
+      const data = quizData[current];
+      if (answer === data.a) {
+        btn.classList.add("correct");
+        correct++;
+        score += hintUsed ? 5 : 10;
+      } else {
+        btn.classList.add("wrong");
+        score -= 5;
+        wrongQuestions.push(data);
+        [...document.querySelectorAll(".option")]
+          .find(b => b.innerText === data.a).classList.add("correct");
+      }
+      setTimeout(() => {
+        current++;
+        if (current < quizData.length) {
+          loadQuestion();
+        } else {
+          showEndScreen();
+        }
+      }, 1000);
+      updateProgress();
+    }
+
+    function updateProgress() {
+      document.getElementById("progress").innerText = `${current}/${quizData.length}`;
+      document.getElementById("score").innerText = `分數: ${score}`;
+      document.getElementById("progressFill").style.width = `${(current/quizData.length)*100}%`;
+    }
+
+    function showHint() {
+      const data = quizData[current];
+      if (hintUsed) return;
+      hintUsed = true;
+      document.getElementById("question").innerText = 
+        `題目：${data.q} → 提示：${data.a[0]}${"_".repeat(data.a.length-2)}${data.a[data.a.length-1]}`;
+    }
+
+    function showEndScreen() {
+      document.getElementById("question").innerText =
+        `練習完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%`;
+      document.getElementById("options").innerHTML = "";
+      const endScreen = document.getElementById("endScreen");
+      endScreen.classList.remove("hidden");
+      endScreen.innerHTML = "";
+
+      if (wrongQuestions.length > 0) {
+        const wrongBtn = document.createElement("button");
+        wrongBtn.className = "control";
+        wrongBtn.innerText = `重練錯題 (${wrongQuestions.length})`;
+        wrongBtn.onclick = () => startQuiz("", true);
+        endScreen.appendChild(wrongBtn);
+      }
+
+      const restartBtn = document.createElement("button");
+      restartBtn.className = "control";
+      restartBtn.innerText = "回到分類選擇";
+      restartBtn.onclick = () => location.reload();
+      endScreen.appendChild(restartBtn);
+    }
+
+    loadCSV();
+  </script>
+</body>
+</html>
