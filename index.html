@@ -61,7 +61,7 @@ function shuffleArray(arr){
 // 從 JSON 載入題庫
 async function loadQuiz() {
   try {
-    const response = await fetch("/data/questions.json");
+    const response = await fetch("data/questions.json");
     if (!response.ok) throw new Error("HTTP錯誤：" + response.status);
     const data = await response.json();
     if (!Array.isArray(data) || data.length === 0) throw new Error("題庫為空");
