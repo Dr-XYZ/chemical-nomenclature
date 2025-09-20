@@ -1,169 +1,184 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <title>化學英文命名練習</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <style>
-    body { margin:0; font-family:system-ui, Arial, sans-serif; background:#f9fafb; color:#222; }
-    .app { display:flex; flex-direction:column; height:100vh; width:100vw; overflow:hidden; }
-    .progress-bar { height:6px; background:#ddd; flex-shrink:0; }
-    .progress-fill { height:100%; background:#4a90e2; width:0%; transition:width 0.3s; }
-    .main { flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:1rem; }
-    #question { font-size:1.6rem; text-align:center; margin:1rem 0; flex:1; display:flex; justify-content:center; align-items:center; }
-    .options { display:flex; flex-direction:column; gap:0.8rem; width:100%; }
-    button.option { flex:1; padding:1rem; font-size:1.2rem; border:none; border-radius:8px; background:#f0f0f0; transition:background 0.2s, transform 0.15s; }
-    button.option:active { transform:scale(0.98); }
-    .correct { background:#a6e3a1 !important; }
-    .wrong { background:#f6a6a6 !important; }
-    .footer { padding-top:0.5rem; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center; font-size:1rem; }
-    button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius:6px; background:#4a90e2; color:white; }
-    .end-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; flex:1; text-align:center; }
-    .end-screen h2 { font-size:1.4rem; }
-    .hidden { display:none !important; }
-  </style>
+<meta charset="UTF-8">
+<title>化學英文命名練習</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<style>
+body { margin:0; font-family:system-ui, Arial, sans-serif; background:#f9fafb; color:#222; }
+.app { display:flex; flex-direction:column; height:100vh; width:100vw; overflow:hidden; }
+.progress-bar { height:6px; background:#ddd; flex-shrink:0; }
+.progress-fill { height:100%; background:#4a90e2; width:0%; transition:width 0.3s; }
+.main { flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:1rem; }
+#question { font-size:1.6rem; text-align:center; margin:1rem 0; flex:1; display:flex; justify-content:center; align-items:center; }
+.options { display:flex; flex-direction:column; gap:0.8rem; width:100%; }
+button.option { flex:1; padding:1rem; font-size:1.2rem; border:none; border-radius:8px; background:#f0f0f0; transition:background 0.2s, transform 0.15s; }
+button.option:active { transform:scale(0.98); }
+.correct { background:#a6e3a1 !important; }
+.wrong { background:#f6a6a6 !important; }
+.footer { padding-top:0.5rem; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center; font-size:1rem; }
+button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius:6px; background:#4a90e2; color:white; }
+.end-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; flex:1; text-align:center; }
+.end-screen h2 { font-size:1.4rem; }
+.hidden { display:none !important; }
+</style>
 </head>
 <body>
-  <div class="app">
-    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+<div class="app">
+  <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
 
-    <div class="main" id="quiz">
-      <div id="question">載入題目中...</div>
-      <div class="options" id="options"></div>
-      <div class="footer">
-        <span id="progress">0/0</span>
-        <span id="score">分數: 0</span>
-        <button class="control" onclick="showHint()">提示</button>
-      </div>
-    </div>
-
-    <div class="main hidden" id="endScreen">
-      <div class="end-screen">
-        <h2 id="resultText"></h2>
-        <button class="control" id="retryWrong">重練錯題</button>
-        <button class="control" onclick="restart()">回到首頁</button>
-      </div>
+  <div class="main" id="quiz">
+    <div id="question">載入題目中...</div>
+    <div class="options" id="options"></div>
+    <div class="footer">
+      <span id="progress">0/0</span>
+      <span id="score">分數: 0</span>
+      <button class="control" onclick="showHint()">提示</button>
     </div>
   </div>
 
-  <script>
-    let allData = [], quizData = [], wrongQuestions = [];
-    let current = 0, correct = 0, score = 0, hintUsed = false;
+  <div class="main hidden" id="endScreen">
+    <div class="end-screen">
+      <h2 id="resultText"></h2>
+      <button class="control" id="retryWrong">重練錯題</button>
+      <button class="control" onclick="restart()">回到首頁</button>
+    </div>
+  </div>
+</div>
 
-    async function loadCSV() {
-      try {
-        const response = await fetch("/data/questions.csv");
-        if(!response.ok) throw new Error("HTTP錯誤：" + response.status);
-        const text = await response.text();
-        const rows = text.trim().split("\n").map(r => r.replace(/^\uFEFF/, ''));
-        allData = rows.slice(1).map(row => {
-          const cols = row.split(",").map(c => c.trim());
-          if(cols.length < 7) { console.warn("欄位不足：", row); return null; }
-          return { category:cols[0], q:cols[1], a:cols[2], options:cols.slice(3,7) };
-        }).filter(x => x !== null);
+<script>
+let allData=[], quizData=[], wrongQuestions=[];
+let current=0, correct=0, score=0, hintUsed=false;
 
-        if(allData.length === 0){
-          document.getElementById("question").innerText = "題庫讀取失敗";
-        } else {
-          shuffleArray(allData);
-          startQuiz();
-        }
-
-      } catch(e){
-        console.error("CSV讀取錯誤：", e);
-        document.getElementById("question").innerText = "題庫讀取失敗";
-      }
+// CSV 解析函式，保證每列至少 4 個選項
+function parseCSV(text){
+  const lines=text.trim().split("\n").map(r=>r.replace(/^\uFEFF/, ''));
+  const data=[];
+  for(let i=1;i<lines.length;i++){
+    const cols=lines[i].split(",").map(c=>c.trim());
+    if(cols.length<7){
+      console.warn("欄位不足:", lines[i]);
+      continue;
     }
+    data.push({
+      category: cols[0]||"unknown",
+      question: cols[1]||"無題目",
+      answer: cols[2]||"無答案",
+      options: cols.slice(3,7).map(o=>o||"無選項")
+    });
+  }
+  return data;
+}
 
-    function shuffleArray(arr){
-      for(let i=arr.length-1;i>0;i--){
-        const j=Math.floor(Math.random()*(i+1));
-        [arr[i],arr[j]]=[arr[j],arr[i]];
-      }
-    }
+// 隨機排序
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+}
 
-    function startQuiz(useWrong=false){
-      quizData = useWrong? wrongQuestions : [...allData];
-      shuffleArray(quizData);
-      current=0; correct=0; score=0; wrongQuestions=[];
-      document.getElementById("quiz").classList.remove("hidden");
-      document.getElementById("endScreen").classList.add("hidden");
-      loadQuestion();
-    }
+// 從伺服器載入 CSV
+async function loadCSV(){
+  try{
+    const response=await fetch("/data/questions.csv");
+    if(!response.ok) throw new Error("HTTP錯誤:"+response.status);
+    const text=await response.text();
+    allData=parseCSV(text);
+    if(allData.length===0) throw new Error("題庫為空");
+    shuffleArray(allData);
+    startQuiz();
+  }catch(e){
+    console.error(e);
+    document.getElementById("question").innerText="題庫讀取失敗";
+  }
+}
 
-    function loadQuestion(){
-      const data = quizData[current];
-      if(!data) return;
-      document.getElementById("question").innerText = data.q;
-      const optionsDiv = document.getElementById("options");
-      optionsDiv.innerHTML = "";
-      hintUsed = false;
+// 開始練習
+function startQuiz(useWrong=false){
+  quizData=useWrong? [...wrongQuestions] : [...allData];
+  shuffleArray(quizData);
+  current=0; correct=0; score=0; wrongQuestions=[];
+  document.getElementById("quiz").classList.remove("hidden");
+  document.getElementById("endScreen").classList.add("hidden");
+  showQuestion();
+}
 
-      const opts = [...data.options];
-      shuffleArray(opts);
+// 顯示單題
+function showQuestion(){
+  if(current>=quizData.length){
+    showEndScreen();
+    return;
+  }
+  const q=quizData[current];
+  document.getElementById("question").innerText=q.question;
+  const optionsDiv=document.getElementById("options");
+  optionsDiv.innerHTML="";
+  const opts=[...q.options];
+  shuffleArray(opts);
+  opts.forEach(opt=>{
+    const btn=document.createElement("button");
+    btn.className="option";
+    btn.innerText=opt;
+    btn.onclick=()=>checkAnswer(opt);
+    optionsDiv.appendChild(btn);
+  });
+  hintUsed=false;
+  updateProgress();
+}
 
-      opts.forEach(opt => {
-        const btn = document.createElement("button");
-        btn.className="option";
-        btn.innerText = opt && opt.trim() ? opt : "無選項";
-        btn.onclick = ()=>checkAnswer(btn,opt);
-        optionsDiv.appendChild(btn);
-      });
+// 判斷答案並自動下一題
+function checkAnswer(selected){
+  const q=quizData[current];
+  const buttons=document.querySelectorAll(".option");
+  buttons.forEach(b=>{
+    if(b.innerText===q.answer) b.classList.add("correct");
+    else if(b.innerText===selected && selected!==q.answer) b.classList.add("wrong");
+  });
 
-      updateProgress();
-    }
+  if(selected===q.answer){
+    score+=10; correct++;
+  } else {
+    score-=5; wrongQuestions.push(q);
+  }
 
-    function checkAnswer(btn,answer){
-      const data = quizData[current];
-      if(!data) return;
-      if(answer === data.a){
-        btn.classList.add("correct");
-        correct++;
-        score += hintUsed?5:10;
-      } else {
-        btn.classList.add("wrong");
-        score -=5;
-        wrongQuestions.push(data);
-        [...document.querySelectorAll(".option")]
-          .find(b=>b.innerText===data.a)?.classList.add("correct");
-      }
-      setTimeout(()=>{
-        current++;
-        if(current<quizData.length) loadQuestion();
-        else showEndScreen();
-      },800);
-      updateProgress();
-    }
+  current++;
+  setTimeout(showQuestion,800);
+  updateProgress();
+}
 
-    function updateProgress(){
-      document.getElementById("progress").innerText = `${current}/${quizData.length}`;
-      document.getElementById("score").innerText = `分數: ${score}`;
-      document.getElementById("progressFill").style.width = `${(current/quizData.length)*100}%`;
-    }
+// 更新進度與分數
+function updateProgress(){
+  document.getElementById("progress").innerText=`${current}/${quizData.length}`;
+  document.getElementById("score").innerText=`分數: ${score}`;
+  document.getElementById("progressFill").style.width=`${(current/quizData.length)*100}%`;
+}
 
-    function showHint(){
-      const data = quizData[current];
-      if(!data || hintUsed) return;
-      hintUsed=true;
-      const hint = data.a.slice(0,2) + "_".repeat(data.a.length-2);
-      document.getElementById("question").innerText = `${data.q} → 提示：${hint}`;
-    }
+// 顯示提示
+function showHint(){
+  const q=quizData[current];
+  if(!q || hintUsed) return;
+  hintUsed=true;
+  const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
+  document.getElementById("question").innerText=`${q.question} → 提示：${hint}`;
+}
 
-    function showEndScreen(){
-      document.getElementById("quiz").classList.add("hidden");
-      document.getElementById("endScreen").classList.remove("hidden");
-      document.getElementById("resultText").innerText =
-        `完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，分數 ${score}`;
-      const retryBtn=document.getElementById("retryWrong");
-      if(wrongQuestions.length>0){
-        retryBtn.style.display="block";
-        retryBtn.onclick=()=>startQuiz(true);
-      } else retryBtn.style.display="none";
-    }
+// 結束畫面
+function showEndScreen(){
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("endScreen").classList.remove("hidden");
+  document.getElementById("resultText").innerText=`完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，分數 ${score}`;
+  const retryBtn=document.getElementById("retryWrong");
+  if(wrongQuestions.length>0){
+    retryBtn.style.display="block";
+    retryBtn.onclick=()=>startQuiz(true);
+  } else retryBtn.style.display="none";
+}
 
-    function restart(){ location.reload(); }
+// 回首頁
+function restart(){ location.reload(); }
 
-    loadCSV();
-  </script>
+loadCSV();
+</script>
 </body>
 </html>
