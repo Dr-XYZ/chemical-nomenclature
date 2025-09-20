@@ -22,7 +22,6 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
 .end-screen h2 { font-size:1.4rem; }
 .hidden { display:none !important; }
 </style>
-<!-- MathJax -->
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -77,7 +76,7 @@ function shuffleArray(arr){
   }
 }
 
-// 從伺服器載入 CSV
+// 讀 CSV
 async function loadCSV(){
   try{
     const response=await fetch("data/questions.csv");
@@ -103,12 +102,9 @@ function startQuiz(useWrong=false){
   showQuestion();
 }
 
-// 顯示單題
+// 顯示題目
 function showQuestion(){
-  if(current >= quizData.length){
-    showEndScreen();
-    return;
-  }
+  if(current >= quizData.length){ showEndScreen(); return; }
   const q = quizData[current];
   document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`; // MathJax inline
   const optionsDiv = document.getElementById("options");
@@ -118,29 +114,28 @@ function showQuestion(){
   opts.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`;  // MathJax inline
+    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`; // MathJax inline
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
-  hintUsed = false;
+  hintUsed=false;
   updateProgress();
   MathJax.typesetPromise();
 }
 
-// 判斷答案
+// 檢查答案
 function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
-
-  answered++; // 按選項即增加已回答題數
+  answered++;
 
   buttons.forEach(b=>{
     if(b.innerHTML === `\$begin:math:text$${q.answer}\\$end:math:text$`) b.classList.add("correct");
-    else if(b.innerHTML === `\$begin:math:text$${selected}\\$end:math:text$` && selected !== q.answer) b.classList.add("wrong");
+    else if(b.innerHTML === `\$begin:math:text$${selected}\\$end:math:text$` && selected!==q.answer) b.classList.add("wrong");
     b.disabled = true;
   });
 
-  if(selected === q.answer) correct++;
+  if(selected===q.answer) correct++;
   else wrongQuestions.push(q);
 
   addNextButton();
@@ -148,20 +143,17 @@ function checkAnswer(selected){
   MathJax.typesetPromise();
 }
 
-// 加「下一題」按鈕
+// 下一題按鈕
 function addNextButton(){
   const optionsDiv = document.getElementById("options");
   const nextBtn = document.createElement("button");
   nextBtn.className = "control";
   nextBtn.innerText = "下一題";
-  nextBtn.onclick = () => {
-    current++;
-    showQuestion();
-  };
+  nextBtn.onclick = () => { current++; showQuestion(); };
   optionsDiv.appendChild(nextBtn);
 }
 
-// 更新進度與分數
+// 更新進度分數
 function updateProgress(){
   document.getElementById("progress").innerText = `${current+1}/${quizData.length}`;
   document.getElementById("score").innerText = `分數: ${correct}/${answered}`;
@@ -172,8 +164,8 @@ function updateProgress(){
 function showHint(){
   const q = quizData[current];
   if(!q || hintUsed) return;
-  hintUsed = true;
-  const hint = q.answer.slice(0,2) + "_".repeat(q.answer.length-2);
+  hintUsed=true;
+  const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
   document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$ → 提示：\$begin:math:text$${hint}\\$end:math:text$`;
   MathJax.typesetPromise();
 }
@@ -182,12 +174,12 @@ function showHint(){
 function showEndScreen(){
   document.getElementById("quiz").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
-  document.getElementById("resultText").innerText = `完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，已答題數 ${quizData.length}`;
+  document.getElementById("resultText").innerText=`完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，已答題數 ${quizData.length}`;
   const retryBtn = document.getElementById("retryWrong");
   if(wrongQuestions.length>0){
     retryBtn.style.display="block";
     retryBtn.onclick=()=>startQuiz(true);
-  } else retryBtn.style.display="none";
+  }else retryBtn.style.display="none";
 }
 
 // 回首頁
