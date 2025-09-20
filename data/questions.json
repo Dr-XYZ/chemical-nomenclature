@@ -1,0 +1,32 @@
+[
+  {
+    "category": "compound",
+    "question": "NaCl",
+    "answer": "Sodium chloride",
+    "options": ["Sodium chloride","Potassium iodide","Calcium carbonate","Magnesium oxide"]
+  },
+  {
+    "category": "compound",
+    "question": "CaCO3",
+    "answer": "Calcium carbonate",
+    "options": ["Calcium carbonate","Sodium carbonate","Magnesium hydroxide","Potassium nitrate"]
+  },
+  {
+    "category": "acid",
+    "question": "HCl",
+    "answer": "Hydrochloric acid",
+    "options": ["Hydrochloric acid","Sulfuric acid","Nitric acid","Acetic acid"]
+  },
+  {
+    "category": "ion",
+    "question": "SO4^2-",
+    "answer": "Sulfate ion",
+    "options": ["Sulfate ion","Sulfite ion","Carbonate ion","Nitrate ion"]
+  },
+  {
+    "category": "element",
+    "question": "O",
+    "answer": "Oxygen",
+    "options": ["Oxygen","Nitrogen","Chlorine","Hydrogen"]
+  }
+]
