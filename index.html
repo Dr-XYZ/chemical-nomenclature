@@ -22,6 +22,20 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
 .end-screen h2 { font-size:1.4rem; }
 .hidden { display:none !important; }
 </style>
+<script>
+// MathJax 配置：在載入 MathJax 之前進行配置
+window.MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']], // 啟用 $...$ 作為行內數學模式
+    displayMath: [['$$', '$$'], ['\\[', '\\]']], // 啟用 $$...$$ 作為顯示數學模式
+    processEscapes: true, // 允許在 TeX 語法中使用轉義字符
+    tags: 'ams' // 啟用 AMS 數學環境的標籤
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -106,7 +120,8 @@ function startQuiz(useWrong=false){
 function showQuestion(){
   if(current >= quizData.length){ showEndScreen(); return; }
   const q = quizData[current];
-  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`; 
+  // 使用 MathJax 標準的 $...$ 行內數學模式
+  document.getElementById("question").innerHTML = `$${q.question}$`;
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = "";
   const opts = [...q.options];
@@ -115,13 +130,15 @@ function showQuestion(){
     const btn = document.createElement("button");
     btn.className = "option";
     btn.dataset.value = opt;  // 原始值保留
-    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`; 
+    // 使用 MathJax 標準的 $...$ 行內數學模式
+    btn.innerHTML = `$${opt}$`;
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
   hintUsed=false;
   updateProgress();
-  MathJax.typesetPromise();
+  // 重新排版 MathJax 內容
+  MathJax.typesetPromise([document.getElementById("question"), optionsDiv]);
 }
 
 // 檢查答案
@@ -141,7 +158,8 @@ function checkAnswer(selected){
 
   addNextButton();
   updateProgress();
-  MathJax.typesetPromise();
+  // 重新排版 MathJax 內容
+  MathJax.typesetPromise([document.getElementById("options")]);
 }
 
 // 下一題按鈕
@@ -167,8 +185,10 @@ function showHint(){
   if(!q || hintUsed) return;
   hintUsed=true;
   const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
-  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$ → 提示：\$begin:math:text$${hint}\\$end:math:text$`;
-  MathJax.typesetPromise();
+  // 使用 MathJax 標準的 $...$ 行內數學模式
+  document.getElementById("question").innerHTML = `$${q.question}$ → 提示：$${hint}$`;
+  // 重新排版 MathJax 內容
+  MathJax.typesetPromise([document.getElementById("question")]);
 }
 
 // 結束畫面
