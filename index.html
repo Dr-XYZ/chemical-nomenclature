@@ -67,7 +67,7 @@ button.control {
 .end-screen h2 { font-size:1.4rem; }
 .hidden { display:none !important; }
 
-/* 針對 MathJax 渲染的內容進行調整，防止溢出 */
+/* 針對 MathJax 渲染的內容進行調整 */
 .MathJax {
     overflow-x: auto;
     max-width: 100%;
@@ -116,12 +116,49 @@ let allData=[], quizData=[], wrongQuestions=[];
 let current=0, correct=0, answered=0, hintUsed=false;
 const nextQuestionBtn = document.getElementById("nextQuestionBtn");
 
-// 把文字包成 \text{...}，保留空格
+// ✅ 專門處理 LaTeX 的函式
 function latexText(str){
   if(!str) return "";
-  // 先處理特殊字元，避免衝突
-  str = str.replace(/([{}_$&#%])/g, '\\$1');
-  return `\\text{${str}}`;
+
+  let out = "";
+  let i = 0;
+
+  while(i < str.length){
+    const ch = str[i];
+
+    if(ch === "_" || ch === "^"){  
+      const op = ch;  
+      i++;
+      if(i < str.length && str[i] === "{"){  
+        let braceCount = 1, j = i+1;
+        while(j < str.length && braceCount > 0){
+          if(str[j] === "{") braceCount++;
+          else if(str[j] === "}") braceCount--;
+          j++;
+        }
+        out += op + str.slice(i, j);
+        i = j;
+      } else {
+        let j = i;
+        while(j < str.length && /[A-Za-z0-9]/.test(str[j])) j++;
+        out += op + "{" + str.slice(i, j) + "}";
+        i = j;
+      }
+    }
+    else if(/\s/.test(ch)){
+      out += "\\ ";
+      i++;
+    }
+    else {
+      let j = i;
+      while(j < str.length && !/[\s_^]/.test(str[j])) j++;
+      const segment = str.slice(i, j)
+        .replace(/([{}$&%#\\])/g, "\\$1");
+      out += "\\text{" + segment + "}";
+      i = j;
+    }
+  }
+  return out;
 }
 
 // CSV 解析
@@ -130,7 +167,7 @@ function parseCSV(text){
   const data=[];
   for(let i=1;i<lines.length;i++){
     const cols=lines[i].split(",").map(c=>c.trim());
-    if(cols.length<7){ console.warn("欄位不足:", lines[i]); continue; }
+    if(cols.length<7) continue;
     data.push({
       category: cols[0]||"unknown",
       question: cols[1]||"無題目",
@@ -160,7 +197,6 @@ async function loadCSV(){
     shuffleArray(allData);
     startQuiz();
   }catch(e){
-    console.error(e);
     document.getElementById("question").innerText="題庫讀取失敗";
   }
 }
@@ -180,10 +216,7 @@ function startQuiz(useWrong=false){
 function showQuestion(){
   if(current >= quizData.length){ showEndScreen(); return; }
   const q = quizData[current];
-
-  const questionDiv = document.getElementById("question");
-  questionDiv.innerHTML = `$${latexText(q.question)}$`;
-
+  document.getElementById("question").innerHTML = `$${latexText(q.question)}$`;
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = "";
   const opts = [...q.options];
@@ -196,11 +229,10 @@ function showQuestion(){
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
-
   hintUsed=false;
   nextQuestionBtn.classList.add("hidden");
   updateProgress();
-  MathJax.typesetPromise([questionDiv, optionsDiv]);
+  MathJax.typesetPromise([document.getElementById("question"), optionsDiv]);
 }
 
 // 檢查答案
@@ -208,23 +240,20 @@ function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
   answered++;
-
   buttons.forEach(b=>{
     if(b.dataset.value === q.answer) b.classList.add("correct");
     else if(b.dataset.value === selected && selected !== q.answer) b.classList.add("wrong");
     b.disabled = true;
   });
-
   if(selected===q.answer) correct++;
   else wrongQuestions.push(q);
-
   nextQuestionBtn.classList.remove("hidden");
   nextQuestionBtn.onclick = () => { current++; showQuestion(); };
   updateProgress();
   MathJax.typesetPromise([document.getElementById("options")]);
 }
 
-// 更新進度
+// 更新進度分數
 function updateProgress(){
   document.getElementById("progress").innerText = `${current+1}/${quizData.length}`;
   document.getElementById("score").innerText = `分數: ${correct}/${answered}`;
@@ -237,9 +266,8 @@ function showHint(){
   if(!q || hintUsed) return;
   hintUsed=true;
   const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
-  const questionDiv = document.getElementById("question");
-  questionDiv.innerHTML = `$${latexText(q.question)}$ → 提示：$${latexText(hint)}$`;
-  MathJax.typesetPromise([questionDiv]);
+  document.getElementById("question").innerHTML = `$${latexText(q.question)}$ → 提示：$${latexText(hint)}$`;
+  MathJax.typesetPromise([document.getElementById("question")]);
 }
 
 // 結束畫面
