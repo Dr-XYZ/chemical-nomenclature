@@ -51,7 +51,7 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
 
 <script>
 let allData=[], quizData=[], wrongQuestions=[];
-let current=0, correct=0, hintUsed=false;
+let current=0, correct=0, answered=0, hintUsed=false;
 
 // CSV 解析
 function parseCSV(text){
@@ -98,7 +98,7 @@ async function loadCSV(){
 function startQuiz(useWrong=false){
   quizData=useWrong ? [...wrongQuestions] : [...allData];
   shuffleArray(quizData);
-  current=0; correct=0; wrongQuestions=[];
+  current=0; correct=0; answered=0; wrongQuestions=[];
   document.getElementById("quiz").classList.remove("hidden");
   document.getElementById("endScreen").classList.add("hidden");
   showQuestion();
@@ -127,10 +127,14 @@ function showQuestion(){
   updateProgress();
 }
 
-// 判斷答案，全部由使用者按下一題
+// 判斷答案，按選項即增加已回答題數
 function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
+
+  // 按下選項即增加已回答題數
+  answered++;
+
   buttons.forEach(b=>{
     if(b.innerHTML === q.answer) b.classList.add("correct");
     else if(b.innerHTML === selected && selected !== q.answer) b.classList.add("wrong");
@@ -159,9 +163,9 @@ function addNextButton(){
 
 // 更新進度與分數
 function updateProgress(){
-  document.getElementById("progress").innerText = `${current}/${quizData.length}`;
-  document.getElementById("score").innerText = `分數: ${correct}/${current}`;
-  document.getElementById("progressFill").style.width = `${(current/quizData.length)*100}%`;
+  document.getElementById("progress").innerText = `${current+1}/${quizData.length}`;
+  document.getElementById("score").innerText = `分數: ${correct}/${answered}`;
+  document.getElementById("progressFill").style.width = `${((current+1)/quizData.length)*100}%`;
 }
 
 // 顯示提示
