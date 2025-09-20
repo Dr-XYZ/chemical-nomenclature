@@ -62,3 +62,61 @@ formula_to_english,CuSO_4,Copper(II) sulfate,Copper(II) sulfate,Copper(I) sulfat
 formula_to_english,C_2H_5OH,Ethanol,Ethanol,Methanol,Propanol,Butanol
 formula_to_english,C_6H_12O_6,Glucose,Glucose,Fructose,Sucrose,Lactose
 formula_to_english,KCl,Potassium chloride,Potassium chloride,Potassium bromide,Potassium nitrate,NaCl
+english_to_formula,Hydrogen ion,H^{+},H^{+},H,H_2,H_2O
+english_to_formula,Hydroxide ion,OH^{-},OH^{-},O^{2-},H_2O,O_2
+english_to_formula,Nitrite ion,NO_2^{-},NO_2^{-},NO_3^{-},N_2O_3,NO
+english_to_formula,Sulfate ion,SO_4^{2-},SO_4^{2-},SO_3^{2-},SO_4,HSO_4^{-}
+english_to_formula,Carbonate ion,CO_3^{2-},CO_3^{2-},HCO_3^{-},CO_2,CO
+english_to_formula,Ammonium ion,NH_4^{+},NH_4^{+},NH_3,N_2H_4,NH_3OH^{+}
+english_to_formula,Phosphate ion,PO_4^{3-},PO_4^{3-},PO_3^{3-},HPO_4^{2-},H_2PO_4^{-}
+english_to_formula,Nitric acid,HNO_3,HNO_3,HNO_2,H_3NO_4,H_2NO_3
+english_to_formula,Sulfurous acid,H_2SO_3,H_2SO_3,H_2SO_4,H_2S,H_2S_2O_5
+english_to_formula,Hydrobromic acid,HBr,HBr,HCl,HI,H_2Br
+english_to_formula,Hydrofluoric acid,HF,HF,HCl,HBr,H_2F
+english_to_formula,Acetic acid,CH_3COOH,CH_3COOH,HCOOH,CH_3CHO,CH_3COOCH_3
+english_to_formula,Magnesium ion,Mg^{2+},Mg^{2+},Mg,MgO,Mg(OH)_2
+english_to_formula,Calcium ion,Ca^{2+},Ca^{2+},Ca,CaO,CaCl_2
+english_to_formula,Sodium ion,Na^{+},Na^{+},K^{+},Li^{+},Ca^{2+}
+english_to_formula,Potassium ion,K^{+},K^{+},Na^{+},Li^{+},Cs^{+}
+english_to_formula,Chloride ion,Cl^{-},Cl^{-},Br^{-},F^{-},I^{-}
+english_to_formula,Bromide ion,Br^{-},Br^{-},Cl^{-},I^{-},HBr
+english_to_formula,Silver ion,Ag^{+},Ag^{+},Ag,Ag_2O,AgCl
+english_to_formula,Copper(I) ion,Cu^{+},Cu^{+},Cu^{2+},CuO,Cu_2O
+english_to_formula,Copper(II) ion,Cu^{2+},Cu^{2+},Cu^{+},CuO,CuSO_4
+english_to_formula,Iron(II) ion,Fe^{2+},Fe^{2+},Fe^{3+},FeO,Fe_2O_3
+english_to_formula,Iron(III) ion,Fe^{3+},Fe^{3+},Fe^{2+},Fe_2O_3,FeO
+english_to_formula,Aluminum ion,Al^{3+},Al^{3+},Al,Al_2O_3,Al(OH)_3
+english_to_formula,Zinc ion,Zn^{2+},Zn^{2+},Zn,ZnO,Zn(OH)_2
+english_to_formula,Lead(II) ion,Pb^{2+},Pb^{2+},Pb,PbO,PbO_2
+english_to_formula,Hydrogen peroxide,H_2O_2,H_2O_2,H_2O,H_2O_3,HO_2
+english_to_formula,Oxygen,O_2,O_2,O_3,H_2O,H_2
+english_to_formula,Ozone,O_3,O_3,O_2,H_2O_2,O
+formula_to_english,H^{+},Hydrogen ion,Hydrogen ion,Proton,H_2,H_2O
+formula_to_english,OH^{-},Hydroxide ion,Hydroxide ion,Oxide ion,H_2O,O_2
+formula_to_english,NO_2^{-},Nitrite ion,Nitrite ion,Nitrate ion,N_2O_3,NO
+formula_to_english,SO_4^{2-},Sulfate ion,Sulfate ion,Sulfite ion,SO_4,HSO_4^{-}
+formula_to_english,CO_3^{2-},Carbonate ion,Carbonate ion,Bicarbonate ion,CO_2,CO
+formula_to_english,NH_4^{+},Ammonium ion,Ammonium ion,Ammonia,N_2H_4,NH_3OH^{+}
+formula_to_english,PO_4^{3-},Phosphate ion,Phosphate ion,Phosphite ion,HPO_4^{2-},H_2PO_4^{-}
+formula_to_english,HNO_3,Nitric acid,Nitric acid,Nitrous acid,Hydroxynitric acid,Nitric oxide
+formula_to_english,H_2SO_3,Sulfurous acid,Sulfurous acid,Sulfuric acid,H_2S,H_2S_2O_5
+formula_to_english,HBr,Hydrobromic acid,Hydrobromic acid,HCl,HI,H_2Br
+formula_to_english,HF,Hydrofluoric acid,Hydrofluoric acid,HCl,HBr,H_2F
+formula_to_english,CH_3COOH,Acetic acid,Acetic acid,Formic acid,CH_3CHO,CH_3COOCH_3
+formula_to_english,Mg^{2+},Magnesium ion,Magnesium ion,Mg,MgO,Mg(OH)_2
+formula_to_english,Ca^{2+},Calcium ion,Calcium ion,Ca,CaO,CaCl_2
+formula_to_english,Na^{+},Sodium ion,Sodium ion,K^{+},Li^{+},Ca^{2+}
+formula_to_english,K^{+},Potassium ion,Potassium ion,Na^{+},Li^{+},Cs^{+}
+formula_to_english,Cl^{-},Chloride ion,Chloride ion,Br^{-},F^{-},I^{-}
+formula_to_english,Br^{-},Bromide ion,Bromide ion,Cl^{-},I^{-},HBr
+formula_to_english,Ag^{+},Silver ion,Silver ion,Ag,Ag_2O,AgCl
+formula_to_english,Cu^{+},Copper(I) ion,Copper(I) ion,Cu^{2+},CuO,Cu_2O
+formula_to_english,Cu^{2+},Copper(II) ion,Copper(II) ion,Cu^{+},CuO,CuSO_4
+formula_to_english,Fe^{2+},Iron(II) ion,Iron(II) ion,Fe^{3+},FeO,Fe_2O_3
+formula_to_english,Fe^{3+},Iron(III) ion,Iron(III) ion,Fe^{2+},Fe_2O_3,FeO
+formula_to_english,Al^{3+},Aluminum ion,Aluminum ion,Al,Al_2O_3,Al(OH)_3
+formula_to_english,Zn^{2+},Zinc ion,Zinc ion,Zn,ZnO,Zn(OH)_2
+formula_to_english,Pb^{2+},Lead(II) ion,Lead(II) ion,Pb,PbO,PbO_2
+formula_to_english,H_2O_2,Hydrogen peroxide,Hydrogen peroxide,H_2O,H_2O_3,HO_2
+formula_to_english,O_2,Oxygen,Oxygen,O_3,H_2O,H_2
+formula_to_english,O_3,Ozone,Ozone,O_2,H_2O_2,O
