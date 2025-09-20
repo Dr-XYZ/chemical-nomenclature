@@ -1,239 +1,239 @@
 category,question,answer,option1,option2,option3,option4
 compound,NaCl,Sodium chloride,Sodium chloride,Potassium iodide,Calcium carbonate,Magnesium oxide
-compound,CaCO<sub>3</sub>,Calcium carbonate,Calcium carbonate,Sodium carbonate,Magnesium hydroxide,Potassium nitrate
-compound,KNO<sub>3</sub>,Potassium nitrate,Potassium nitrate,Sodium nitrate,Ammonium sulfate,Magnesium nitrate
+compound,CaCO_3,Calcium carbonate,Calcium carbonate,Sodium carbonate,Magnesium hydroxide,Potassium nitrate
+compound,KNO_3,Potassium nitrate,Potassium nitrate,Sodium nitrate,Ammonium sulfate,Magnesium nitrate
 compound,MgO,Magnesium oxide,Magnesium oxide,Magnesium hydroxide,Calcium oxide,Potassium oxide
-compound,Na<sub>2</sub>CO<sub>3</sub>,Sodium carbonate,Sodium carbonate,Sodium bicarbonate,Calcium carbonate,Potassium carbonate
+compound,Na_2CO_3,Sodium carbonate,Sodium carbonate,Sodium bicarbonate,Calcium carbonate,Potassium carbonate
 acid,HCl,Hydrochloric acid,Hydrochloric acid,Sulfuric acid,Nitric acid,Acetic acid
-acid,H<sub>2</sub>SO<sub>4</sub>,Sulfuric acid,Sulfuric acid,Hydrochloric acid,Nitric acid,Carbonic acid
-acid,HNO<sub>3</sub>,Nitric acid,Nitric acid,Hydrochloric acid,Phosphoric acid,Sulfurous acid
-acid,CH<sub>3</sub>COOH,Acetic acid,Acetic acid,Formic acid,Citric acid,Sulfuric acid
-acid,H<sub>3</sub>PO<sub>4</sub>,Phosphoric acid,Phosphoric acid,Nitric acid,Sulfuric acid,Hydrochloric acid
-ion,Fe<sup>2+</sup>,Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous ion,Ferric ion
-ion,Fe<sup>3+</sup>,Iron(III) ion,Iron(III) ion,Iron(II) ion,Ferric ion,Ferrous ion
-ion,SO<sub>4</sub><sup>2-</sup>,Sulfate ion,Sulfate ion,Sulfite ion,Carbonate ion,Nitrate ion
-ion,NO<sub>3</sub><sup>-</sup>,Nitrate ion,Nitrate ion,Sulfate ion,Chloride ion,Phosphate ion
-ion,Cl<sup>-</sup>,Chloride ion,Chloride ion,Bromide ion,Iodide ion,Nitrate ion
+acid,H_2SO_4,Sulfuric acid,Sulfuric acid,Hydrochloric acid,Nitric acid,Carbonic acid
+acid,HNO_3,Nitric acid,Nitric acid,Hydrochloric acid,Phosphoric acid,Sulfurous acid
+acid,CH_3COOH,Acetic acid,Acetic acid,Formic acid,Citric acid,Sulfuric acid
+acid,H_3PO_4,Phosphoric acid,Phosphoric acid,Nitric acid,Sulfuric acid,Hydrochloric acid
+ion,Fe^{2+},Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous ion,Ferric ion
+ion,Fe^{3+},Iron(III) ion,Iron(III) ion,Iron(II) ion,Ferric ion,Ferrous ion
+ion,SO_4^{2-},Sulfate ion,Sulfate ion,Sulfite ion,Carbonate ion,Nitrate ion
+ion,NO_3^{-},Nitrate ion,Nitrate ion,Sulfate ion,Chloride ion,Phosphate ion
+ion,Cl^{-},Chloride ion,Chloride ion,Bromide ion,Iodide ion,Nitrate ion
 element,H,Hydrogen,Hydrogen,Oxygen,Carbon,Nitrogen
 element,O,Oxygen,Oxygen,Nitrogen,Chlorine,Hydrogen
 element,C,Carbon,Carbon,Oxygen,Carbon dioxide,Calcium
 element,N,Nitrogen,Nitrogen,Oxygen,Carbon,Hydrogen
 element,Na,Sodium,Sodium,Potassium,Calcium,Magnesium
 compound,KCl,Potassium chloride,Potassium chloride,Sodium chloride,Calcium chloride,Magnesium chloride
-compound,H<sub>2</sub>O,Water,Water,Hydrogen peroxide,Dihydrogen monoxide,Hydroxide
-compound,CO<sub>2</sub>,Carbon dioxide,Carbon dioxide,Carbon monoxide,Dioxide carbon,Carbonate
-compound,NH<sub>3</sub>,Ammonia,Ammonia,Ammonium,Nitrogen hydride,Hydrazine
-compound,CH<sub>4</sub>,Methane,Methane,Ethane,Propane,Butane
+compound,H_2O,Water,Water,Hydrogen peroxide,Dihydrogen monoxide,Hydroxide
+compound,CO_2,Carbon dioxide,Carbon dioxide,Carbon monoxide,Dioxide carbon,Carbonate
+compound,NH_3,Ammonia,Ammonia,Ammonium,Nitrogen hydride,Hydrazine
+compound,CH_4,Methane,Methane,Ethane,Propane,Butane
 acid,HBr,Hydrobromic acid,Hydrobromic acid,Hydrochloric acid,Hydriodic acid,Sulfuric acid
 acid,HI,Hydriodic acid,Hydriodic acid,Hydrobromic acid,Hydrochloric acid,Nitric acid
-acid,H<sub>2</sub>CO<sub>3</sub>,Carbonic acid,Carbonic acid,Sulfuric acid,Phosphoric acid,Acetic acid
-acid,H<sub>2</sub>SO<sub>3</sub>,Sulfurous acid,Sulfurous acid,Sulfuric acid,Nitrous acid,Carbonic acid
+acid,H_2CO_3,Carbonic acid,Carbonic acid,Sulfuric acid,Phosphoric acid,Acetic acid
+acid,H_2SO_3,Sulfurous acid,Sulfurous acid,Sulfuric acid,Nitrous acid,Carbonic acid
 acid,HCN,Hydrocyanic acid,Hydrocyanic acid,Cyanic acid,Thiocyanic acid,Formic acid
-ion,Cu<sup>+</sup>,Copper(I) ion,Copper(I) ion,Copper(II) ion,Cuprous ion,Cupric ion
-ion,Cu<sup>2+</sup>,Copper(II) ion,Copper(II) ion,Copper(I) ion,Cupric ion,Cuprous ion
-ion,OH<sup>-</sup>,Hydroxide ion,Hydroxide ion,Hydronium ion,Oxide ion,Peroxide ion
-ion,NH<sub>4</sub><sup>+</sup>,Ammonium ion,Ammonium ion,Ammonia,Nitride ion,Hydrazine
-ion,CO<sub>3</sub><sup>2-</sup>,Carbonate ion,Carbonate ion,Bicarbonate ion,Sulfate ion,Nitrate ion
+ion,Cu^{+},Copper(I) ion,Copper(I) ion,Copper(II) ion,Cuprous ion,Cupric ion
+ion,Cu^{2+},Copper(II) ion,Copper(II) ion,Copper(I) ion,Cupric ion,Cuprous ion
+ion,OH^{-},Hydroxide ion,Hydroxide ion,Hydronium ion,Oxide ion,Peroxide ion
+ion,NH_4^{+},Ammonium ion,Ammonium ion,Ammonia,Nitride ion,Hydrazine
+ion,CO_3^{2-},Carbonate ion,Carbonate ion,Bicarbonate ion,Sulfate ion,Nitrate ion
 element,K,Potassium,Potassium,Calcium,Magnesium
 element,Ca,Calcium,Calcium,Potassium,Sodium,Magnesium
 element,Mg,Magnesium,Magnesium,Calcium,Sodium,Potassium
 element,Cl,Chlorine,Chlorine,Bromine,Fluorine,Iodine
 element,Br,Bromine,Bromine,Chlorine,Iodine,Fluorine
-compound,Al<sub>2</sub>O<sub>3</sub>,Aluminum oxide,Aluminum oxide,Aluminum hydroxide,Aluminum carbonate,Aluminum sulfate
-compound,Fe<sub>2</sub>O<sub>3</sub>,Iron(III) oxide,Iron(III) oxide,Iron(II) oxide,Ferric oxide,Ferrous oxide
-compound,FeCl<sub>2</sub>,Iron(II) chloride,Iron(II) chloride,Iron(III) chloride,Ferrous chloride,Ferric chloride
-compound,FeCl<sub>3</sub>,Iron(III) chloride,Iron(III) chloride,Iron(II) chloride,Ferric chloride,Ferrous chloride
-compound,AgNO<sub>3</sub>,Silver nitrate,Silver nitrate,Silver chloride,Silver sulfate,Silver oxide
-acid,HMnO<sub>4</sub>,Permanganic acid,Permanganic acid,Manganic acid,Chromic acid,Sulfuric acid
-acid,H<sub>2</sub>CrO<sub>4</sub>,Chromic acid,Chromic acid,Dichromic acid,Sulfuric acid,Nitric acid
-acid,H<sub>2</sub>C<sub>2</sub>O<sub>4</sub>,Oxalic acid,Oxalic acid,Malonic acid,Succinic acid,Formic acid
-acid,C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>,Citric acid,Citric acid,Acetic acid,Formic acid,Lactic acid
-acid,HIO<sub>3</sub>,Iodic acid,Iodic acid,Periodic acid,Hydroiodic acid,Chloric acid
-ion,Cr<sub>2</sub>O<sub>7</sub><sup>2-</sup>,Dichromate ion,Dichromate ion,Chromate ion,Sulfate ion,Permanganate ion
-ion,MnO<sub>4</sub><sup>-</sup>,Permanganate ion,Permanganate ion,Manganate ion,Chromate ion,Sulfate ion
-ion,PO<sub>4</sub><sup>3-</sup>,Phosphate ion,Phosphate ion,Phosphite ion,Sulfate ion,Nitrate ion
-ion,SO<sub>3</sub><sup>2-</sup>,Sulfite ion,Sulfite ion,Sulfate ion,Thiosulfate ion,Carbonate ion
-ion,S<sub>2</sub>O<sub>3</sub><sup>2-</sup>,Thiosulfate ion,Thiosulfate ion,Sulfate ion,Sulfite ion,Persulfate ion
+compound,Al_2O_3,Aluminum oxide,Aluminum oxide,Aluminum hydroxide,Aluminum carbonate,Aluminum sulfate
+compound,Fe_2O_3,Iron(III) oxide,Iron(III) oxide,Iron(II) oxide,Ferric oxide,Ferrous oxide
+compound,FeCl_2,Iron(II) chloride,Iron(II) chloride,Iron(III) chloride,Ferrous chloride,Ferric chloride
+compound,FeCl_3,Iron(III) chloride,Iron(III) chloride,Iron(II) chloride,Ferric chloride,Ferrous chloride
+compound,AgNO_3,Silver nitrate,Silver nitrate,Silver chloride,Silver sulfate,Silver oxide
+acid,HMnO_4,Permanganic acid,Permanganic acid,Manganic acid,Chromic acid,Sulfuric acid
+acid,H_2CrO_4,Chromic acid,Chromic acid,Dichromic acid,Sulfuric acid,Nitric acid
+acid,H_2C_2O_4,Oxalic acid,Oxalic acid,Malonic acid,Succinic acid,Formic acid
+acid,C_6H_8O_7,Citric acid,Citric acid,Acetic acid,Formic acid,Lactic acid
+acid,HIO_3,Iodic acid,Iodic acid,Periodic acid,Hydroiodic acid,Chloric acid
+ion,Cr_2O_7^{2-},Dichromate ion,Dichromate ion,Chromate ion,Sulfate ion,Permanganate ion
+ion,MnO_4^{-},Permanganate ion,Permanganate ion,Manganate ion,Chromate ion,Sulfate ion
+ion,PO_4^{3-},Phosphate ion,Phosphate ion,Phosphite ion,Sulfate ion,Nitrate ion
+ion,SO_3^{2-},Sulfite ion,Sulfite ion,Sulfate ion,Thiosulfate ion,Carbonate ion
+ion,S_2O_3^{2-},Thiosulfate ion,Thiosulfate ion,Sulfate ion,Sulfite ion,Persulfate ion
 element,I,Iodine,Iodine,Bromine,Chlorine,Fluorine
 element,F,Fluorine,Fluorine,Chlorine,Bromine,Iodine
 element,P,Phosphorus,Phosphorus,Sulfur,Silicon,Carbon
 element,S,Sulfur,Sulfur,Phosphorus,Silicon,Oxygen
 element,Si,Silicon,Silicon,Sulfur,Phosphorus,Carbon
 compound,ZnO,Zinc oxide,Zinc oxide,Zinc hydroxide,Zinc carbonate,Zinc sulfate
-compound,CuSO<sub>4</sub>,Copper(II) sulfate,Copper(II) sulfate,Copper(I) sulfate,Cupric sulfate,Cuprous sulfate
-compound,PbCl<sub>2</sub>,Lead(II) chloride,Lead(II) chloride,Lead(IV) chloride,Plumbous chloride,Plumbic chloride
-compound,SnO<sub>2</sub>,Tin(IV) oxide,Tin(IV) oxide,Tin(II) oxide,Stannic oxide,Stannous oxide
-compound,HgCl<sub>2</sub>,Mercury(II) chloride,Mercury(II) chloride,Mercury(I) chloride,Mercuric chloride,Mercurous chloride
-acid,H<sub>2</sub>S,Hydrosulfuric acid,Hydrosulfuric acid,Sulfuric acid,Sulfurous acid,Thiosulfuric acid
-acid,H<sub>3</sub>BO<sub>3</sub>,Boric acid,Boric acid,Boronic acid,Borinic acid,Carbonic acid
-acid,H<sub>2</sub>SiO<sub>3</sub>,Silicic acid,Silicic acid,Silicous acid,Silicane,Silane
-acid,HIO<sub>4</sub>,Periodic acid,Periodic acid,Iodic acid,Hydroiodic acid,Perchloric acid
-acid,HClO<sub>4</sub>,Perchloric acid,Perchloric acid,Chloric acid,Chlorous acid,Hypochlorous acid
-ion,ClO<sub>4</sub><sup>-</sup>,Perchlorate ion,Perchlorate ion,Chlorate ion,Chlorite ion,Hypochlorite ion
-ion,ClO<sub>3</sub><sup>-</sup>,Chlorate ion,Chlorate ion,Perchlorate ion,Chlorite ion,Hypochlorite ion
-ion,ClO<sub>2</sub><sup>-</sup>,Chlorite ion,Chlorite ion,Chlorate ion,Perchlorate ion,Hypochlorite ion
-ion,ClO<sup>-</sup>,Hypochlorite ion,Hypochlorite ion,Chlorite ion,Chlorate ion,Perchlorate ion
-ion,CN<sup>-</sup>,Cyanide ion,Cyanide ion,Cyanate ion,Thiocyanate ion,Nitride ion
+compound,CuSO_4,Copper(II) sulfate,Copper(II) sulfate,Copper(I) sulfate,Cupric sulfate,Cuprous sulfate
+compound,PbCl_2,Lead(II) chloride,Lead(II) chloride,Lead(IV) chloride,Plumbous chloride,Plumbic chloride
+compound,SnO_2,Tin(IV) oxide,Tin(IV) oxide,Tin(II) oxide,Stannic oxide,Stannous oxide
+compound,HgCl_2,Mercury(II) chloride,Mercury(II) chloride,Mercury(I) chloride,Mercuric chloride,Mercurous chloride
+acid,H_2S,Hydrosulfuric acid,Hydrosulfuric acid,Sulfuric acid,Sulfurous acid,Thiosulfuric acid
+acid,H_3BO_3,Boric acid,Boric acid,Boronic acid,Borinic acid,Carbonic acid
+acid,H_2SiO_3,Silicic acid,Silicic acid,Silicous acid,Silicane,Silane
+acid,HIO_4,Periodic acid,Periodic acid,Iodic acid,Hydroiodic acid,Perchloric acid
+acid,HClO_4,Perchloric acid,Perchloric acid,Chloric acid,Chlorous acid,Hypochlorous acid
+ion,ClO_4^{-},Perchlorate ion,Perchlorate ion,Chlorate ion,Chlorite ion,Hypochlorite ion
+ion,ClO_3^{-},Chlorate ion,Chlorate ion,Perchlorate ion,Chlorite ion,Hypochlorite ion
+ion,ClO_2^{-},Chlorite ion,Chlorite ion,Chlorate ion,Perchlorate ion,Hypochlorite ion
+ion,ClO^{-},Hypochlorite ion,Hypochlorite ion,Chlorite ion,Chlorate ion,Perchlorate ion
+ion,CN^{-},Cyanide ion,Cyanide ion,Cyanate ion,Thiocyanate ion,Nitride ion
 element,Zn,Zinc,Zinc,Copper,Lead,Tin
 element,Pb,Lead,Lead,Tin,Copper,Zinc
 element,Sn,Tin,Tin,Lead,Zinc,Copper
 element,Hg,Mercury,Mercury,Silver,Gold,Platinum
 element,Ag,Silver,Silver,Gold,Mercury,Platinum
-compound,BaSO<sub>4</sub>,Barium sulfate,Barium sulfate,Barium sulfite,Barium carbonate,Barium chloride
-compound,SrCO<sub>3</sub>,Strontium carbonate,Strontium carbonate,Strontium sulfate,Strontium chloride,Strontium oxide
+compound,BaSO_4,Barium sulfate,Barium sulfate,Barium sulfite,Barium carbonate,Barium chloride
+compound,SrCO_3,Strontium carbonate,Strontium carbonate,Strontium sulfate,Strontium chloride,Strontium oxide
 compound,LiF,Lithium fluoride,Lithium fluoride,Lithium chloride,Lithium bromide,Lithium iodide
 compound,CsI,Cesium iodide,Cesium iodide,Cesium chloride,Cesium bromide,Cesium fluoride
 compound,RbBr,Rubidium bromide,Rubidium bromide,Rubidium chloride,Rubidium iodide,Rubidium fluoride
-acid,HMnO<sub>4</sub>,Permanganic acid,Permanganic acid,Manganic acid,Chromic acid,Sulfuric acid
-acid,H<sub>2</sub>CrO<sub>4</sub>,Chromic acid,Chromic acid,Dichromic acid,Sulfuric acid,Nitric acid
-acid,H<sub>2</sub>C<sub>2</sub>O<sub>4</sub>,Oxalic acid,Oxalic acid,Malonic acid,Succinic acid,Formic acid
-acid,C<sub>6</sub>H<sub>8</sub>O<sub>7</sub>,Citric acid,Citric acid,Acetic acid,Formic acid,Lactic acid
-acid,HIO<sub>3</sub>,Iodic acid,Iodic acid,Periodic acid,Hydroiodic acid,Chloric acid
-ion,Cr<sub>2</sub>O<sub>7</sub><sup>2-</sup>,Dichromate ion,Dichromate ion,Chromate ion,Sulfate ion,Permanganate ion
-ion,MnO<sub>4</sub><sup>-</sup>,Permanganate ion,Permanganate ion,Manganate ion,Chromate ion,Sulfate ion
-ion,PO<sub>4</sub><sup>3-</sup>,Phosphate ion,Phosphate ion,Phosphite ion,Sulfate ion,Nitrate ion
-ion,SO<sub>3</sub><sup>2-</sup>,Sulfite ion,Sulfite ion,Sulfate ion,Thiosulfate ion,Carbonate ion
-ion,S<sub>2</sub>O<sub>3</sub><sup>2-</sup>,Thiosulfate ion,Thiosulfate ion,Sulfate ion,Sulfite ion,Persulfate ion
+acid,HMnO_4,Permanganic acid,Permanganic acid,Manganic acid,Chromic acid,Sulfuric acid
+acid,H_2CrO_4,Chromic acid,Chromic acid,Dichromic acid,Sulfuric acid,Nitric acid
+acid,H_2C_2O_4,Oxalic acid,Oxalic acid,Malonic acid,Succinic acid,Formic acid
+acid,C_6H_8O_7,Citric acid,Citric acid,Acetic acid,Formic acid,Lactic acid
+acid,HIO_3,Iodic acid,Iodic acid,Periodic acid,Hydroiodic acid,Chloric acid
+ion,Cr_2O_7^{2-},Dichromate ion,Dichromate ion,Chromate ion,Sulfate ion,Permanganate ion
+ion,MnO_4^{-},Permanganate ion,Permanganate ion,Manganate ion,Chromate ion,Sulfate ion
+ion,PO_4^{3-},Phosphate ion,Phosphate ion,Phosphite ion,Sulfate ion,Nitrate ion
+ion,SO_3^{2-},Sulfite ion,Sulfite ion,Sulfate ion,Thiosulfate ion,Carbonate ion
+ion,S_2O_3^{2-},Thiosulfate ion,Thiosulfate ion,Sulfate ion,Sulfite ion,Persulfate ion
 element,Ba,Barium,Barium,Strontium,Calcium,Magnesium
 element,Sr,Strontium,Strontium,Barium,Calcium,Magnesium
 element,Li,Lithium,Lithium,Sodium,Potassium,Rubidium
 element,Cs,Cesium,Cesium,Rubidium,Potassium,Sodium
 element,Rb,Rubidium,Rubidium,Cesium,Potassium,Sodium
-compound,NiCl<sub>2</sub>,Nickel(II) chloride,Nickel(II) chloride,Nickel(III) chloride,Nickel chloride,Nickelous chloride
-compound,CoSO<sub>4</sub>,Cobalt(II) sulfate,Cobalt(II) sulfate,Cobalt(III) sulfate,Cobaltous sulfate,Cobaltic sulfate
-compound,CrCl<sub>3</sub>,Chromium(III) chloride,Chromium(III) chloride,Chromium(II) chloride,Chromic chloride,Chromous chloride
-compound,MnSO<sub>4</sub>,Manganese(II) sulfate,Manganese(II) sulfate,Manganese(III) sulfate,Manganous sulfate,Manganic sulfate
+compound,NiCl_2,Nickel(II) chloride,Nickel(II) chloride,Nickel(III) chloride,Nickel chloride,Nickelous chloride
+compound,CoSO_4,Cobalt(II) sulfate,Cobalt(II) sulfate,Cobalt(III) sulfate,Cobaltous sulfate,Cobaltic sulfate
+compound,CrCl_3,Chromium(III) chloride,Chromium(III) chloride,Chromium(II) chloride,Chromic chloride,Chromous chloride
+compound,MnSO_4,Manganese(II) sulfate,Manganese(II) sulfate,Manganese(III) sulfate,Manganous sulfate,Manganic sulfate
 compound,CdS,Cadmium sulfide,Cadmium sulfide,Cadmium sulfate,Cadmium oxide,Cadmium chloride
-acid,H<sub>2</sub>SeO<sub>4</sub>,Selenic acid,Selenic acid,Selenous acid,Sulfuric acid,Telluric acid
-acid,H<sub>2</sub>TeO<sub>4</sub>,Telluric acid,Telluric acid,Tellurous acid,Selenic acid,Sulfuric acid
+acid,H_2SeO_4,Selenic acid,Selenic acid,Selenous acid,Sulfuric acid,Telluric acid
+acid,H_2TeO_4,Telluric acid,Telluric acid,Tellurous acid,Selenic acid,Sulfuric acid
 acid,HSCN,Thiocyanic acid,Thiocyanic acid,Cyanic acid,Hydrocyanic acid,Isothiocyanic acid
 acid,HOCN,Cyanic acid,Cyanic acid,Thiocyanic acid,Hydrocyanic acid,Isocyanic acid
 acid,HFO,Hypofluorous acid,Hypofluorous acid,Fluoric acid,Hydrofluoric acid,Perfluoric acid
-ion,SCN<sup>-</sup>,Thiocyanate ion,Thiocyanate ion,Cyanate ion,Cyanide ion,Isothiocyanate ion
-ion,OCN<sup>-</sup>,Cyanate ion,Cyanate ion,Thiocyanate ion,Cyanide ion,Isocyanate ion
-ion,AsO<sub>4</sub><sup>3-</sup>,Arsenate ion,Arsenate ion,Arsenite ion,Phosphate ion,Antimonate ion
-ion,SbO<sub>4</sub><sup>3-</sup>,Antimonate ion,Antimonate ion,Antimonite ion,Arsenate ion,Phosphate ion
-ion,BiO<sub>3</sub><sup>-</sup>,Bismuthate ion,Bismuthate ion,Bismuthite ion,Nitrate ion,Antimonate ion
+ion,SCN^{-},Thiocyanate ion,Thiocyanate ion,Cyanate ion,Cyanide ion,Isothiocyanate ion
+ion,OCN^{-},Cyanate ion,Cyanate ion,Thiocyanate ion,Cyanide ion,Isocyanate ion
+ion,AsO_4^{3-},Arsenate ion,Arsenate ion,Arsenite ion,Phosphate ion,Antimonate ion
+ion,SbO_4^{3-},Antimonate ion,Antimonate ion,Antimonite ion,Arsenate ion,Phosphate ion
+ion,BiO_3^{-},Bismuthate ion,Bismuthate ion,Bismuthite ion,Nitrate ion,Antimonate ion
 element,Ni,Nickel,Nickel,Cobalt,Chromium,Manganese
 element,Co,Cobalt,Cobalt,Nickel,Chromium,Manganese
 element,Cr,Chromium,Chromium,Nickel,Cobalt,Manganese
 element,Mn,Manganese,Manganese,Nickel,Cobalt,Chromium
 element,Cd,Cadmium,Cadmium,Zinc,Mercury,Lead
-compound,PtCl<sub>4</sub>,Platinum(IV) chloride,Platinum(IV) chloride,Platinum(II) chloride,Platinic chloride,Platinous chloride
-compound,AuCl<sub>3</sub>,Gold(III) chloride,Gold(III) chloride,Gold(I) chloride,Auric chloride,Aurous chloride
-compound,PdCl<sub>2</sub>,Palladium(II) chloride,Palladium(II) chloride,Palladium(IV) chloride,Palladous chloride,Palladic chloride
-compound,RhCl<sub>3</sub>,Rhodium(III) chloride,Rhodium(III) chloride,Rhodium(II) chloride,Rhodic chloride,Rhodous chloride
-compound,IrCl<sub>3</sub>,Iridium(III) chloride,Iridium(III) chloride,Iridium(IV) chloride,Iridic chloride,Iridous chloride
-acid,H<sub>2</sub>PtCl<sub>6</sub>,Hexachloroplatinic(IV) acid,Hexachloroplatinic(IV) acid,Tetrachloroplatinic(II) acid,Chloroplatinic acid,Platinic acid
-acid,HAuCl<sub>4</sub>,Tetrachloroauric(III) acid,Tetrachloroauric(III) acid,Dichloroauric(I) acid,Chloroauric acid,Auric acid
-acid,H<sub>2</sub>PdCl<sub>4</sub>,Tetrachloropalladic(II) acid,Tetrachloropalladic(II) acid,Hexachloropalladic(IV) acid,Chloropalladic acid,Palladic acid
-acid,H<sub>3</sub>RhCl<sub>6</sub>,Hexachlororhodic(III) acid,Hexachlororhodic(III) acid,Trichlororhodic(I) acid,Chlororhodic acid,Rhodic acid
-acid,H<sub>3</sub>IrCl<sub>6</sub>,Hexachloroiridic(III) acid,Hexachloroiridic(III) acid,Tetrachloroiridic(IV) acid,Chloroiridic acid,Iridic acid
-ion,PtCl<sub>6</sub><sup>2-</sup>,Hexachloroplatinate(IV) ion,Hexachloroplatinate(IV) ion,Tetrachloroplatinate(II) ion,Chloroplatinate ion,Platinate ion
-ion,AuCl<sub>4</sub><sup>-</sup>,Tetrachloroaurate(III) ion,Tetrachloroaurate(III) ion,Dichloroaurate(I) ion,Chloroaurate ion,Aurate ion
-ion,PdCl<sub>4</sub><sup>2-</sup>,Tetrachloropalladate(II) ion,Tetrachloropalladate(II) ion,Hexachloropalladate(IV) ion,Chloropalladate ion,Palladate ion
-ion,RhCl<sub>6</sub><sup>3-</sup>,Hexachlororhodate(III) ion,Hexachlororhodate(III) ion,Trichlororhodate(I) ion,Chlororhodate ion,Rhodate ion
-ion,IrCl<sub>6</sub><sup>3-</sup>,Hexachloroiridate(III) ion,Hexachloroiridate(III) ion,Tetrachloroiridate(IV) ion,Chloroiridate ion,Iridate ion
+compound,PtCl_4,Platinum(IV) chloride,Platinum(IV) chloride,Platinum(II) chloride,Platinic chloride,Platinous chloride
+compound,AuCl_3,Gold(III) chloride,Gold(III) chloride,Gold(I) chloride,Auric chloride,Aurous chloride
+compound,PdCl_2,Palladium(II) chloride,Palladium(II) chloride,Palladium(IV) chloride,Palladous chloride,Palladic chloride
+compound,RhCl_3,Rhodium(III) chloride,Rhodium(III) chloride,Rhodium(II) chloride,Rhodic chloride,Rhodous chloride
+compound,IrCl_3,Iridium(III) chloride,Iridium(III) chloride,Iridium(IV) chloride,Iridic chloride,Iridous chloride
+acid,H_2PtCl_6,Hexachloroplatinic(IV) acid,Hexachloroplatinic(IV) acid,Tetrachloroplatinic(II) acid,Chloroplatinic acid,Platinic acid
+acid,HAuCl_4,Tetrachloroauric(III) acid,Tetrachloroauric(III) acid,Dichloroauric(I) acid,Chloroauric acid,Auric acid
+acid,H_2PdCl_4,Tetrachloropalladic(II) acid,Tetrachloropalladic(II) acid,Hexachloropalladic(IV) acid,Chloropalladic acid,Palladic acid
+acid,H_3RhCl_6,Hexachlororhodic(III) acid,Hexachlororhodic(III) acid,Trichlororhodic(I) acid,Chlororhodic acid,Rhodic acid
+acid,H_3IrCl_6,Hexachloroiridic(III) acid,Hexachloroiridic(III) acid,Tetrachloroiridic(IV) acid,Chloroiridic acid,Iridic acid
+ion,PtCl_6^{2-},Hexachloroplatinate(IV) ion,Hexachloroplatinate(IV) ion,Tetrachloroplatinate(II) ion,Chloroplatinate ion,Platinate ion
+ion,AuCl_4^{-},Tetrachloroaurate(III) ion,Tetrachloroaurate(III) ion,Dichloroaurate(I) ion,Chloroaurate ion,Aurate ion
+ion,PdCl_4^{2-},Tetrachloropalladate(II) ion,Tetrachloropalladate(II) ion,Hexachloropalladate(IV) ion,Chloropalladate ion,Palladate ion
+ion,RhCl_6^{3-},Hexachlororhodate(III) ion,Hexachlororhodate(III) ion,Trichlororhodate(I) ion,Chlororhodate ion,Rhodate ion
+ion,IrCl_6^{3-},Hexachloroiridate(III) ion,Hexachloroiridate(III) ion,Tetrachloroiridate(IV) ion,Chloroiridate ion,Iridate ion
 element,Pt,Platinum,Platinum,Gold,Palladium,Rhodium
 element,Au,Gold,Gold,Platinum,Palladium,Rhodium
 element,Pd,Palladium,Palladium,Platinum,Gold,Rhodium
 element,Rh,Rhodium,Rhodium,Platinum,Gold,Palladium
 element,Ir,Iridium,Iridium,Platinum,Gold,Palladium
-compound,SnF<sub>2</sub>,Tin(II) fluoride,Tin(II) fluoride,Tin(IV) fluoride,Stannous fluoride,Stannic fluoride
-compound,PbI<sub>4</sub>,Lead(IV) iodide,Lead(IV) iodide,Lead(II) iodide,Plumbic iodide,Plumbous iodide
-compound,Cu<sub>2</sub>O,Copper(I) oxide,Copper(I) oxide,Copper(II) oxide,Cuprous oxide,Cupric oxide
-compound,Hg<sub>2</sub>Cl<sub>2</sub>,Mercury(I) chloride,Mercury(I) chloride,Mercury(II) chloride,Mercurous chloride,Mercuric chloride
+compound,SnF_2,Tin(II) fluoride,Tin(II) fluoride,Tin(IV) fluoride,Stannous fluoride,Stannic fluoride
+compound,PbI_4,Lead(IV) iodide,Lead(IV) iodide,Lead(II) iodide,Plumbic iodide,Plumbous iodide
+compound,Cu_2O,Copper(I) oxide,Copper(I) oxide,Copper(II) oxide,Cuprous oxide,Cupric oxide
+compound,Hg_2Cl_2,Mercury(I) chloride,Mercury(I) chloride,Mercury(II) chloride,Mercurous chloride,Mercuric chloride
 compound,FeS,Iron(II) sulfide,Iron(II) sulfide,Iron(III) sulfide,Ferrous sulfide,Ferric sulfide
-acid,H<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>,Dichromic acid,Dichromic acid,Chromic acid,Sulfuric acid,Permanganic acid
-acid,H<sub>2</sub>MnO<sub>4</sub>,Manganic acid,Manganic acid,Permanganic acid,Chromic acid,Sulfuric acid
-acid,H<sub>2</sub>C<sub>4</sub>H<sub>4</sub>O<sub>6</sub>,Tartaric acid,Tartaric acid,Malic acid,Citric acid,Oxalic acid
-acid,H<sub>3</sub>C<sub>6</sub>H<sub>5</sub>O<sub>7</sub>,Citric acid,Citric acid,Acetic acid,Formic acid,Lactic acid
-acid,H<sub>2</sub>SO<sub>5</sub>,Peroxomonosulfuric acid,Peroxomonosulfuric acid,Peroxodisulfuric acid,Sulfuric acid,Sulfurous acid
-ion,CrO<sub>4</sub><sup>2-</sup>,Chromate ion,Chromate ion,Dichromate ion,Sulfate ion,Permanganate ion
-ion,MnO<sub>4</sub><sup>2-</sup>,Manganate ion,Manganate ion,Permanganate ion,Chromate ion,Sulfate ion
-ion,C<sub>4</sub>H<sub>4</sub>O<sub>6</sub><sup>2-</sup>,Tartrate ion,Tartrate ion,Malate ion,Citrate ion,Oxalate ion
-ion,C<sub>6</sub>H<sub>5</sub>O<sub>7</sub><sup>3-</sup>,Citrate ion,Citrate ion,Acetate ion,Formate ion,Lactate ion
-ion,SO<sub>5</sub><sup>2-</sup>,Peroxomonosulfate ion,Peroxomonosulfate ion,Peroxodisulfate ion,Sulfate ion,Sulfite ion
+acid,H_2Cr_2O_7,Dichromic acid,Dichromic acid,Chromic acid,Sulfuric acid,Permanganic acid
+acid,H_2MnO_4,Manganic acid,Manganic acid,Permanganic acid,Chromic acid,Sulfuric acid
+acid,H_2C_4H_4O_6,Tartaric acid,Tartaric acid,Malic acid,Citric acid,Oxalic acid
+acid,H_3C_6H_5O_7,Citric acid,Citric acid,Acetic acid,Formic acid,Lactic acid
+acid,H_2SO_5,Peroxomonosulfuric acid,Peroxomonosulfuric acid,Peroxodisulfuric acid,Sulfuric acid,Sulfurous acid
+ion,CrO_4^{2-},Chromate ion,Chromate ion,Dichromate ion,Sulfate ion,Permanganate ion
+ion,MnO_4^{2-},Manganate ion,Manganate ion,Permanganate ion,Chromate ion,Sulfate ion
+ion,C_4H_4O_6^{2-},Tartrate ion,Tartrate ion,Malate ion,Citrate ion,Oxalate ion
+ion,C_6H_5O_7^{3-},Citrate ion,Citrate ion,Acetate ion,Formate ion,Lactate ion
+ion,SO_5^{2-},Peroxomonosulfate ion,Peroxomonosulfate ion,Peroxodisulfate ion,Sulfate ion,Sulfite ion
 element,As,Arsenic,Arsenic,Antimony,Bismuth,Phosphorus
 element,Sb,Antimony,Antimony,Arsenic,Bismuth,Phosphorus
 element,Bi,Bismuth,Bismuth,Arsenic,Antimony,Phosphorus
 element,Se,Selenium,Selenium,Tellurium,Sulfur,Oxygen
 element,Te,Tellurium,Tellurium,Selenium,Sulfur,Oxygen
-compound,KMnO<sub>4</sub>,Potassium permanganate,Potassium permanganate,Potassium manganate,Potassium chromate,Potassium dichromate
-compound,K<sub>2</sub>Cr<sub>2</sub>O<sub>7</sub>,Potassium dichromate,Potassium dichromate,Potassium chromate,Potassium permanganate,Potassium manganate
-compound,Na<sub>2</sub>S<sub>2</sub>O<sub>3</sub>,Sodium thiosulfate,Sodium thiosulfate,Sodium sulfate,Sodium sulfite,Sodium persulfate
-compound,NH<sub>4</sub>NO<sub>3</sub>,Ammonium nitrate,Ammonium nitrate,Ammonium nitrite,Ammonium sulfate,Ammonium chloride
-compound,Ca(OH)<sub>2</sub>,Calcium hydroxide,Calcium hydroxide,Calcium oxide,Calcium carbonate,Calcium sulfate
-acid,H<sub>2</sub>S<sub>2</sub>O<sub>3</sub>,Thiosulfuric acid,Thiosulfuric acid,Sulfuric acid,Sulfurous acid,Peroxodisulfuric acid
-acid,H<sub>2</sub>S<sub>2</sub>O<sub>8</sub>,Peroxodisulfuric acid,Peroxodisulfuric acid,Peroxomonosulfuric acid,Sulfuric acid,Thiosulfuric acid
-acid,H<sub>2</sub>N<sub>2</sub>O<sub>2</sub>,Hyponitrous acid,Hyponitrous acid,Nitrous acid,Nitric acid,Hydrazoic acid
-acid,HN<sub>3</sub>,Hydrazoic acid,Hydrazoic acid,Hyponitrous acid,Nitrous acid,Nitric acid
-acid,H<sub>2</sub>SO<sub>2</sub>,Sulfoxylic acid,Sulfoxylic acid,Sulfurous acid,Sulfuric acid,Thiosulfuric acid
-ion,S<sub>2</sub>O<sub>8</sub><sup>2-</sup>,Peroxodisulfate ion,Peroxodisulfate ion,Peroxomonosulfate ion,Sulfate ion,Thiosulfate ion
-ion,N<sub>2</sub>O<sub>2</sub><sup>2-</sup>,Hyponitrite ion,Hyponitrite ion,Nitrite ion,Nitrate ion,Azide ion
-ion,N<sub>3</sub><sup>-</sup>,Azide ion,Azide ion,Hyponitrite ion,Nitrite ion,Nitrate ion
-ion,SO<sub>2</sub><sup>2-</sup>,Sulfoxylate ion,Sulfoxylate ion,Sulfite ion,Sulfate ion,Thiosulfate ion
-ion,HCO<sub>3</sub><sup>-</sup>,Bicarbonate ion,Bicarbonate ion,Carbonate ion,Sulfate ion,Nitrate ion
+compound,KMnO_4,Potassium permanganate,Potassium permanganate,Potassium manganate,Potassium chromate,Potassium dichromate
+compound,K_2Cr_2O_7,Potassium dichromate,Potassium dichromate,Potassium chromate,Potassium permanganate,Potassium manganate
+compound,Na_2S_2O_3,Sodium thiosulfate,Sodium thiosulfate,Sodium sulfate,Sodium sulfite,Sodium persulfate
+compound,NH_4NO_3,Ammonium nitrate,Ammonium nitrate,Ammonium nitrite,Ammonium sulfate,Ammonium chloride
+compound,Ca(OH)_2,Calcium hydroxide,Calcium hydroxide,Calcium oxide,Calcium carbonate,Calcium sulfate
+acid,H_2S_2O_3,Thiosulfuric acid,Thiosulfuric acid,Sulfuric acid,Sulfurous acid,Peroxodisulfuric acid
+acid,H_2S_2O_8,Peroxodisulfuric acid,Peroxodisulfuric acid,Peroxomonosulfuric acid,Sulfuric acid,Thiosulfuric acid
+acid,H_2N_2O_2,Hyponitrous acid,Hyponitrous acid,Nitrous acid,Nitric acid,Hydrazoic acid
+acid,HN_3,Hydrazoic acid,Hydrazoic acid,Hyponitrous acid,Nitrous acid,Nitric acid
+acid,H_2SO_2,Sulfoxylic acid,Sulfoxylic acid,Sulfurous acid,Sulfuric acid,Thiosulfuric acid
+ion,S_2O_8^{2-},Peroxodisulfate ion,Peroxodisulfate ion,Peroxomonosulfate ion,Sulfate ion,Thiosulfate ion
+ion,N_2O_2^{2-},Hyponitrite ion,Hyponitrite ion,Nitrite ion,Nitrate ion,Azide ion
+ion,N_3^{-},Azide ion,Azide ion,Hyponitrite ion,Nitrite ion,Nitrate ion
+ion,SO_2^{2-},Sulfoxylate ion,Sulfoxylate ion,Sulfite ion,Sulfate ion,Thiosulfate ion
+ion,HCO_3^{-},Bicarbonate ion,Bicarbonate ion,Carbonate ion,Sulfate ion,Nitrate ion
 element,B,Boron,Boron,Aluminum,Gallium,Indium
 element,Al,Aluminum,Aluminum,Boron,Gallium,Indium
 element,Ga,Gallium,Gallium,Boron,Aluminum,Indium
 element,In,Indium,Indium,Boron,Aluminum,Gallium
 element,Tl,Thallium,Thallium,Boron,Aluminum,Gallium
-compound,K<sub>2</sub>SO<sub>4</sub>,Potassium sulfate,Potassium sulfate,Potassium sulfite,Potassium thiosulfate,Potassium carbonate
-compound,NaNO<sub>2</sub>,Sodium nitrite,Sodium nitrite,Sodium nitrate,Sodium hyponitrite,Sodium azide
-compound,Mg(NO<sub>3</sub>)<sub>2</sub>,Magnesium nitrate,Magnesium nitrate,Magnesium nitrite,Magnesium sulfate,Magnesium chloride
-compound,AlCl<sub>3</sub>,Aluminum chloride,Aluminum chloride,Aluminum fluoride,Aluminum bromide,Aluminum iodide
-compound,ZnSO<sub>4</sub>,Zinc sulfate,Zinc sulfate,Zinc sulfite,Zinc thiosulfate,Zinc carbonate
+compound,K_2SO_4,Potassium sulfate,Potassium sulfate,Potassium sulfite,Potassium thiosulfate,Potassium carbonate
+compound,NaNO_2,Sodium nitrite,Sodium nitrite,Sodium nitrate,Sodium hyponitrite,Sodium azide
+compound,Mg(NO_3)_2,Magnesium nitrate,Magnesium nitrate,Magnesium nitrite,Magnesium sulfate,Magnesium chloride
+compound,AlCl_3,Aluminum chloride,Aluminum chloride,Aluminum fluoride,Aluminum bromide,Aluminum iodide
+compound,ZnSO_4,Zinc sulfate,Zinc sulfate,Zinc sulfite,Zinc thiosulfate,Zinc carbonate
 acid,HIO,Hypoiodous acid,Hypoiodous acid,Iodous acid,Iodic acid,Periodic acid
 acid,HBrO,Hypobromous acid,Hypobromous acid,Bromous acid,Bromic acid,Perbromic acid
 acid,HClO,Hypochlorous acid,Hypochlorous acid,Chlorous acid,Chloric acid,Perchloric acid
-acid,HIO<sub>2</sub>,Iodous acid,Iodous acid,Hypoiodous acid,Iodic acid,Periodic acid
-acid,HBrO<sub>2</sub>,Bromous acid,Bromous acid,Hypobromous acid,Bromic acid,Perbromic acid
-ion,IO<sup>-</sup>,Hypoiodite ion,Hypoiodite ion,Iodite ion,Iodate ion,Periodate ion
-ion,BrO<sup>-</sup>,Hypobromite ion,Hypobromite ion,Bromite ion,Bromate ion,Perbromate ion
-ion,ClO<sup>-</sup>,Hypochlorite ion,Hypochlorite ion,Chlorite ion,Chlorate ion,Perchlorate ion
-ion,IO<sub>2</sub><sup>-</sup>,Iodite ion,Iodite ion,Hypoiodite ion,Iodate ion,Periodate ion
-ion,BrO<sub>2</sub><sup>-</sup>,Bromite ion,Bromite ion,Hypobromite ion,Bromate ion,Perbromate ion
+acid,HIO_2,Iodous acid,Iodous acid,Hypoiodous acid,Iodic acid,Periodic acid
+acid,HBrO_2,Bromous acid,Bromous acid,Hypobromous acid,Bromic acid,Perbromic acid
+ion,IO^{-},Hypoiodite ion,Hypoiodite ion,Iodite ion,Iodate ion,Periodate ion
+ion,BrO^{-},Hypobromite ion,Hypobromite ion,Bromite ion,Bromate ion,Perbromate ion
+ion,ClO^{-},Hypochlorite ion,Hypochlorite ion,Chlorite ion,Chlorate ion,Perchlorate ion
+ion,IO_2^{-},Iodite ion,Iodite ion,Hypoiodite ion,Iodate ion,Periodate ion
+ion,BrO_2^{-},Bromite ion,Bromite ion,Hypobromite ion,Bromate ion,Perbromate ion
 element,Ge,Germanium,Germanium,Silicon,Tin,Lead
 element,Sn,Tin,Tin,Germanium,Silicon,Lead
 element,Pb,Lead,Lead,Germanium,Silicon,Tin
 element,As,Arsenic,Arsenic,Phosphorus,Antimony,Bismuth
 element,Sb,Antimony,Antimony,Phosphorus,Arsenic,Bismuth
-compound,Fe(OH)<sub>3</sub>,Iron(III) hydroxide,Iron(III) hydroxide,Iron(II) hydroxide,Ferric hydroxide,Ferrous hydroxide
-compound,Cu(OH)<sub>2</sub>,Copper(II) hydroxide,Copper(II) hydroxide,Copper(I) hydroxide,Cupric hydroxide,Cuprous hydroxide
+compound,Fe(OH)_3,Iron(III) hydroxide,Iron(III) hydroxide,Iron(II) hydroxide,Ferric hydroxide,Ferrous hydroxide
+compound,Cu(OH)_2,Copper(II) hydroxide,Copper(II) hydroxide,Copper(I) hydroxide,Cupric hydroxide,Cuprous hydroxide
 compound,AgCl,Silver chloride,Silver chloride,Silver bromide,Silver iodide,Silver fluoride
-compound,Pb(NO<sub>3</sub>)<sub>2</sub>,Lead(II) nitrate,Lead(II) nitrate,Lead(IV) nitrate,Plumbous nitrate,Plumbic nitrate
-compound,SnCl<sub>4</sub>,Tin(IV) chloride,Tin(IV) chloride,Tin(II) chloride,Stannic chloride,Stannous chloride
-acid,HClO<sub>3</sub>,Chloric acid,Chloric acid,Perchloric acid,Chlorous acid,Hypochlorous acid
-acid,HBrO<sub>3</sub>,Bromic acid,Bromic acid,Perbromic acid,Bromous acid,Hypobromous acid
-acid,HIO<sub>3</sub>,Iodic acid,Iodic acid,Periodic acid,Iodous acid,Hypoiodous acid
-acid,HClO<sub>4</sub>,Perchloric acid,Perchloric acid,Chloric acid,Chlorous acid,Hypochlorous acid
-acid,HBrO<sub>4</sub>,Perbromic acid,Perbromic acid,Bromic acid,Bromous acid,Hypobromous acid
-ion,ClO<sub>3</sub><sup>-</sup>,Chlorate ion,Chlorate ion,Perchlorate ion,Chlorite ion,Hypochlorite ion
-ion,BrO<sub>3</sub><sup>-</sup>,Bromate ion,Bromate ion,Perbromate ion,Bromite ion,Hypobromite ion
-ion,IO<sub>3</sub><sup>-</sup>,Iodate ion,Iodate ion,Periodate ion,Iodite ion,Hypoiodite ion
-ion,ClO<sub>4</sub><sup>-</sup>,Perchlorate ion,Perchlorate ion,Chlorate ion,Chlorite ion,Hypochlorite ion
-ion,BrO<sub>4</sub><sup>-</sup>,Perbromate ion,Perbromate ion,Bromate ion,Bromite ion,Hypobromite ion
+compound,Pb(NO_3)_2,Lead(II) nitrate,Lead(II) nitrate,Lead(IV) nitrate,Plumbous nitrate,Plumbic nitrate
+compound,SnCl_4,Tin(IV) chloride,Tin(IV) chloride,Tin(II) chloride,Stannic chloride,Stannous chloride
+acid,HClO_3,Chloric acid,Chloric acid,Perchloric acid,Chlorous acid,Hypochlorous acid
+acid,HBrO_3,Bromic acid,Bromic acid,Perbromic acid,Bromous acid,Hypobromous acid
+acid,HIO_3,Iodic acid,Iodic acid,Periodic acid,Iodous acid,Hypoiodous acid
+acid,HClO_4,Perchloric acid,Perchloric acid,Chloric acid,Chlorous acid,Hypochlorous acid
+acid,HBrO_4,Perbromic acid,Perbromic acid,Bromic acid,Bromous acid,Hypobromous acid
+ion,ClO_3^{-},Chlorate ion,Chlorate ion,Perchlorate ion,Chlorite ion,Hypochlorite ion
+ion,BrO_3^{-},Bromate ion,Bromate ion,Perbromate ion,Bromite ion,Hypobromite ion
+ion,IO_3^{-},Iodate ion,Iodate ion,Periodate ion,Iodite ion,Hypoiodite ion
+ion,ClO_4^{-},Perchlorate ion,Perchlorate ion,Chlorate ion,Chlorite ion,Hypochlorite ion
+ion,BrO_4^{-},Perbromate ion,Perbromate ion,Bromate ion,Bromite ion,Hypobromite ion
 element,O,Oxygen,Oxygen,Sulfur,Selenium,Tellurium
 element,S,Sulfur,Sulfur,Oxygen,Selenium,Tellurium
 element,Se,Selenium,Selenium,Oxygen,Sulfur,Tellurium
 element,Te,Tellurium,Tellurium,Oxygen,Sulfur,Selenium
 element,Po,Polonium,Polonium,Oxygen,Sulfur,Selenium
-compound,K<sub>2</sub>CO<sub>3</sub>,Potassium carbonate,Potassium carbonate,Potassium bicarbonate,Potassium sulfate,Potassium nitrate
-compound,NaHCO<sub>3</sub>,Sodium bicarbonate,Sodium bicarbonate,Sodium carbonate,Sodium sulfate,Sodium nitrate
-compound,CaSO<sub>4</sub>,Calcium sulfate,Calcium sulfate,Calcium sulfite,Calcium thiosulfate,Calcium carbonate
-compound,MgCO<sub>3</sub>,Magnesium carbonate,Magnesium carbonate,Magnesium bicarbonate,Magnesium sulfate,Magnesium nitrate
-compound,Al<sub>2</sub>(SO<sub>4</sub>)<sub>3</sub>,Aluminum sulfate,Aluminum sulfate,Aluminum sulfite,Aluminum thiosulfate,Aluminum carbonate
-acid,H<sub>2</sub>SO<sub>4</sub>,Sulfuric acid,Sulfuric acid,Sulfurous acid,Thiosulfuric acid,Peroxomonosulfuric acid
-acid,H<sub>2</sub>SO<sub>3</sub>,Sulfurous acid,Sulfurous acid,Sulfuric acid,Thiosulfuric acid,Peroxomonosulfuric acid
-acid,H<sub>2</sub>S<sub>2</sub>O<sub>3</sub>,Thiosulfuric acid,Thiosulfuric acid,Sulfuric acid,Sulfurous acid,Peroxomonosulfuric acid
-acid,H<sub>2</sub>CO<sub>3</sub>,Carbonic acid,Carbonic acid,Bicarbonic acid,Sulfuric acid,Nitric acid
-acid,H<sub>3</sub>PO<sub>4</sub>,Phosphoric acid,Phosphoric acid,Phosphorous acid,Hypophosphorous acid,Metaphosphoric acid
-ion,SO<sub>4</sub><sup>2-</sup>,Sulfate ion,Sulfate ion,Sulfite ion,Thiosulfate ion,Carbonate ion
-ion,SO<sub>3</sub><sup>2-</sup>,Sulfite ion,Sulfite ion,Sulfate ion,Thiosulfate ion,Carbonate ion
-ion,S<sub>2</sub>O<sub>3</sub><sup>2-</sup>,Thiosulfate ion,Thiosulfate ion,Sulfate ion,Sulfite ion,Carbonate ion
-ion,CO<sub>3</sub><sup>2-</sup>,Carbonate ion,Carbonate ion,Bicarbonate ion,Sulfate ion,Nitrate ion
-ion,HCO<sub>3</sub><sup>-</sup>,Bicarbonate ion,Bicarbonate ion,Carbonate ion,Sulfate ion,Nitrate ion
+compound,K_2CO_3,Potassium carbonate,Potassium carbonate,Potassium bicarbonate,Potassium sulfate,Potassium nitrate
+compound,NaHCO_3,Sodium bicarbonate,Sodium bicarbonate,Sodium carbonate,Sodium sulfate,Sodium nitrate
+compound,CaSO_4,Calcium sulfate,Calcium sulfate,Calcium sulfite,Calcium thiosulfate,Calcium carbonate
+compound,MgCO_3,Magnesium carbonate,Magnesium carbonate,Magnesium bicarbonate,Magnesium sulfate,Magnesium nitrate
+compound,Al_2(SO_4)_3,Aluminum sulfate,Aluminum sulfate,Aluminum sulfite,Aluminum thiosulfate,Aluminum carbonate
+acid,H_2SO_4,Sulfuric acid,Sulfuric acid,Sulfurous acid,Thiosulfuric acid,Peroxomonosulfuric acid
+acid,H_2SO_3,Sulfurous acid,Sulfurous acid,Sulfuric acid,Thiosulfuric acid,Peroxomonosulfuric acid
+acid,H_2S_2O_3,Thiosulfuric acid,Thiosulfuric acid,Sulfuric acid,Sulfurous acid,Peroxomonosulfuric acid
+acid,H_2CO_3,Carbonic acid,Carbonic acid,Bicarbonic acid,Sulfuric acid,Nitric acid
+acid,H_3PO_4,Phosphoric acid,Phosphoric acid,Phosphorous acid,Hypophosphorous acid,Metaphosphoric acid
+ion,SO_4^{2-},Sulfate ion,Sulfate ion,Sulfite ion,Thiosulfate ion,Carbonate ion
+ion,SO_3^{2-},Sulfite ion,Sulfite ion,Sulfate ion,Thiosulfate ion,Carbonate ion
+ion,S_2O_3^{2-},Thiosulfate ion,Thiosulfate ion,Sulfate ion,Sulfite ion,Carbonate ion
+ion,CO_3^{2-},Carbonate ion,Carbonate ion,Bicarbonate ion,Sulfate ion,Nitrate ion
+ion,HCO_3^{-},Bicarbonate ion,Bicarbonate ion,Carbonate ion,Sulfate ion,Nitrate ion
 element,F,Fluorine,Fluorine,Chlorine,Bromine,Iodine
 element,Cl,Chlorine,Chlorine,Fluorine,Bromine,Iodine
 element,Br,Bromine,Bromine,Fluorine,Chlorine,Iodine
