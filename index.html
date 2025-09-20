@@ -4,86 +4,102 @@
   <meta charset="UTF-8">
   <title>化學英文命名練習</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f5f9;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .container {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 420px;
-      text-align: center;
-    }
-    h1 {
-      font-size: 1.3rem;
-      margin-bottom: 1.5rem;
-    }
-    .options {
-      display: grid;
-      gap: 0.8rem;
-    }
-    button.option {
-      padding: 1rem;
-      border: none;
-      border-radius: 8px;
-      background: #f0f0f0;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: transform 0.15s, background 0.2s;
-    }
-    button.option:hover {
-      background: #e0e0e0;
-      transform: scale(1.03);
-    }
-    .correct { background: #a6e3a1 !important; }
-    .wrong { background: #f6a6a6 !important; }
-    .progress-bar {
-      margin-top: 1rem;
-      height: 12px;
-      background: #ddd;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: #4a90e2;
-      width: 0%;
-      transition: width 0.3s;
-    }
-    .footer {
-      margin-top: 1rem;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.9rem;
-    }
-    .hidden { display: none; }
-    select {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      border-radius: 6px;
-    }
-    button.control {
-      margin-top: 0.8rem;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      background: #4a90e2;
-      color: white;
-      cursor: pointer;
-    }
-    .end-screen {
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f5f9;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+.container {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 480px;
+  margin: 0.5rem;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#question {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+button.option {
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.15s, background 0.2s;
+  width: 100%;
+}
+
+button.option:hover {
+  background: #e0e0e0;
+  transform: scale(1.02);
+}
+
+.correct { background: #a6e3a1 !important; }
+.wrong { background: #f6a6a6 !important; }
+
+.progress-bar {
+  margin-top: 1rem;
+  height: 14px;
+  background: #ddd;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #4a90e2;
+  width: 0%;
+  transition: width 0.3s;
+}
+
+.footer {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+}
+
+button.control {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* 📱 手機專屬優化 */
+@media (max-width: 600px) {
+  h1 { font-size: 1.2rem; }
+  #question { font-size: 1.3rem; }
+  button.option { font-size: 1rem; padding: 0.9rem; }
+  .container { padding: 0.8rem; margin: 0.3rem; }
+}
   </style>
 </head>
 <body>
