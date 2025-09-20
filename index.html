@@ -78,17 +78,24 @@ function shuffleArray(arr){
   }
 }
 
-// 從伺服器載入 CSV
-async function loadCSV(){
-  try{
-    const response=await fetch("/data/questions.csv");
-    if(!response.ok) throw new Error("HTTP錯誤:"+response.status);
-    const text=await response.text();
-    allData=parseCSV(text);
-    if(allData.length===0) throw new Error("題庫為空");
+async function loadQuiz() {
+  try {
+    const response = await fetch("/data/questions.json");
+    if (!response.ok) throw new Error("HTTP錯誤：" + response.status);
+    const data = await response.json();
+    if (!Array.isArray(data) || data.length === 0) throw new Error("題庫為空");
+
+    allData = data.map(q => ({
+      category: q.category || "unknown",
+      question: q.question || "無題目",
+      answer: q.answer || "無答案",
+      options: Array.isArray(q.options) ? q.options.slice(0,4).map(o=>o||"無選項") : ["無選項","無選項","無選項","無選項"]
+    }));
+
     shuffleArray(allData);
     startQuiz();
-  }catch(e){
+
+  } catch(e) {
     console.error(e);
     document.getElementById("question").innerText="題庫讀取失敗";
   }
