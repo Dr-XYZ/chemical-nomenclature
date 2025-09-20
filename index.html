@@ -3,119 +3,132 @@
 <head>
   <meta charset="UTF-8">
   <title>化學英文命名練習</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <style>
-body {
-  font-family: Arial, sans-serif;
-  background: #f2f5f9;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-}
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background: #f9fafb;
+      color: #222;
+    }
 
-.container {
-  background: white;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 480px;
-  margin: 0.5rem;
-}
+    .app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
 
-h1 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
+    /* 頂部進度條 */
+    .progress-bar {
+      height: 6px;
+      background: #ddd;
+      flex-shrink: 0;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #4a90e2;
+      width: 0%;
+      transition: width 0.3s;
+    }
 
-#question {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
+    /* 主體區域 */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem;
+    }
 
-.options {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
+    #question {
+      font-size: 1.6rem;
+      text-align: center;
+      margin: 1rem 0;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-button.option {
-  padding: 1rem;
-  border: none;
-  border-radius: 8px;
-  background: #f0f0f0;
-  cursor: pointer;
-  font-size: 1.1rem;
-  transition: transform 0.15s, background 0.2s;
-  width: 100%;
-}
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      width: 100%;
+    }
 
-button.option:hover {
-  background: #e0e0e0;
-  transform: scale(1.02);
-}
+    button.option {
+      flex: 1;
+      padding: 1rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #f0f0f0;
+      transition: background 0.2s, transform 0.15s;
+    }
+    button.option:active {
+      transform: scale(0.98);
+    }
+    .correct { background: #a6e3a1 !important; }
+    .wrong { background: #f6a6a6 !important; }
 
-.correct { background: #a6e3a1 !important; }
-.wrong { background: #f6a6a6 !important; }
+    /* 底部控制區 */
+    .footer {
+      padding-top: 0.5rem;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    button.control {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #4a90e2;
+      color: white;
+    }
 
-.progress-bar {
-  margin-top: 1rem;
-  height: 14px;
-  background: #ddd;
-  border-radius: 7px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: #4a90e2;
-  width: 0%;
-  transition: width 0.3s;
-}
-
-.footer {
-  margin-top: 0.8rem;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1rem;
-}
-
-button.control {
-  margin-top: 1rem;
-  padding: 0.8rem 1rem;
-  border: none;
-  border-radius: 6px;
-  background: #4a90e2;
-  color: white;
-  cursor: pointer;
-  width: 100%;
-}
-
-/* 📱 手機專屬優化 */
-@media (max-width: 600px) {
-  h1 { font-size: 1.2rem; }
-  #question { font-size: 1.3rem; }
-  button.option { font-size: 1rem; padding: 0.9rem; }
-  .container { padding: 0.8rem; margin: 0.3rem; }
-}
+    /* 結束畫面 */
+    .end-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex: 1;
+      text-align: center;
+    }
+    .end-screen h2 {
+      font-size: 1.4rem;
+    }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>化學英文命名練習</h1>
-    <select id="categorySelect"></select>
-    <div id="quiz" class="hidden">
-      <h2 id="question">題目載入中...</h2>
+  <div class="app">
+    <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+
+    <div class="main" id="quiz">
+      <div id="question">載入題目中...</div>
       <div class="options" id="options"></div>
-      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+
       <div class="footer">
         <span id="progress">0/0</span>
         <span id="score">分數: 0</span>
+        <button class="control" onclick="showHint()">提示</button>
       </div>
-      <button class="control" onclick="showHint()">提示</button>
-      <div id="endScreen" class="end-screen hidden"></div>
+    </div>
+
+    <div class="main hidden" id="endScreen">
+      <div class="end-screen">
+        <h2 id="resultText"></h2>
+        <button class="control" id="retryWrong">重練錯題</button>
+        <button class="control" onclick="restart()">回到首頁</button>
+      </div>
     </div>
   </div>
 
@@ -127,32 +140,27 @@ button.control {
     let hintUsed = false;
 
     async function loadCSV() {
-      const response = await fetch("questions.csv");
-      const text = await response.text();
-      const rows = text.trim().split("\n").slice(1);
-      allData = rows.map(row => {
-        const cols = row.split(",");
-        return {
-          category: cols[0],
-          q: cols[1],
-          a: cols[2],
-          options: cols.slice(3)
-        };
-      });
-      initCategorySelect();
+      try {
+        const response = await fetch("/questions.csv"); // 從伺服器端讀取
+        const text = await response.text();
+        const rows = text.trim().split("\n").slice(1);
+        allData = rows.map(row => {
+          const cols = row.split(",");
+          return {
+            category: cols[0],
+            q: cols[1],
+            a: cols[2],
+            options: cols.slice(3)
+          };
+        });
+        startQuiz();
+      } catch (e) {
+        document.getElementById("question").innerText = "無法載入題庫";
+      }
     }
 
-    function initCategorySelect() {
-      const select = document.getElementById("categorySelect");
-      const categories = [...new Set(allData.map(d => d.category))];
-      select.innerHTML = "<option value=''>請選擇題庫分類</option>" +
-        categories.map(c => `<option value="${c}">${c}</option>`).join("");
-      select.onchange = () => startQuiz(select.value);
-    }
-
-    function startQuiz(category, useWrong = false) {
-      if (!category && !useWrong) return;
-      quizData = useWrong ? wrongQuestions : allData.filter(d => d.category === category);
+    function startQuiz(useWrong = false) {
+      quizData = useWrong ? wrongQuestions : allData;
       current = 0; correct = 0; score = 0; wrongQuestions = [];
       document.getElementById("quiz").classList.remove("hidden");
       document.getElementById("endScreen").classList.add("hidden");
@@ -161,7 +169,7 @@ button.control {
 
     function loadQuestion() {
       const data = quizData[current];
-      document.getElementById("question").innerText = `題目：${data.q}`;
+      document.getElementById("question").innerText = data.q;
       const optionsDiv = document.getElementById("options");
       optionsDiv.innerHTML = "";
       hintUsed = false;
@@ -196,7 +204,7 @@ button.control {
         } else {
           showEndScreen();
         }
-      }, 1000);
+      }, 800);
       updateProgress();
     }
 
@@ -210,31 +218,26 @@ button.control {
       const data = quizData[current];
       if (hintUsed) return;
       hintUsed = true;
-      document.getElementById("question").innerText = 
-        `題目：${data.q} → 提示：${data.a[0]}${"_".repeat(data.a.length-2)}${data.a[data.a.length-1]}`;
+      document.getElementById("question").innerText =
+        `${data.q} → 提示：${data.a[0]}${"_".repeat(data.a.length-2)}${data.a[data.a.length-1]}`;
     }
 
     function showEndScreen() {
-      document.getElementById("question").innerText =
-        `練習完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%`;
-      document.getElementById("options").innerHTML = "";
-      const endScreen = document.getElementById("endScreen");
-      endScreen.classList.remove("hidden");
-      endScreen.innerHTML = "";
-
+      document.getElementById("quiz").classList.add("hidden");
+      document.getElementById("endScreen").classList.remove("hidden");
+      document.getElementById("resultText").innerText =
+        `完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，分數 ${score}`;
+      const retryBtn = document.getElementById("retryWrong");
       if (wrongQuestions.length > 0) {
-        const wrongBtn = document.createElement("button");
-        wrongBtn.className = "control";
-        wrongBtn.innerText = `重練錯題 (${wrongQuestions.length})`;
-        wrongBtn.onclick = () => startQuiz("", true);
-        endScreen.appendChild(wrongBtn);
+        retryBtn.style.display = "block";
+        retryBtn.onclick = () => startQuiz(true);
+      } else {
+        retryBtn.style.display = "none";
       }
+    }
 
-      const restartBtn = document.createElement("button");
-      restartBtn.className = "control";
-      restartBtn.innerText = "回到分類選擇";
-      restartBtn.onclick = () => location.reload();
-      endScreen.appendChild(restartBtn);
+    function restart() {
+      location.reload();
     }
 
     loadCSV();
