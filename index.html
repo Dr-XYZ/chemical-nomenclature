@@ -110,7 +110,7 @@ function showQuestion(){
     return;
   }
   const q = quizData[current];
-  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`;
+  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`; // MathJax inline
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = "";
   const opts = [...q.options];
@@ -118,13 +118,12 @@ function showQuestion(){
   opts.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`;
+    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`;  // MathJax inline
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
   hintUsed = false;
   updateProgress();
-  // 觸發 MathJax 渲染
   MathJax.typesetPromise();
 }
 
@@ -133,8 +132,7 @@ function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
 
-  // 按下選項即增加已回答題數
-  answered++;
+  answered++; // 按選項即增加已回答題數
 
   buttons.forEach(b=>{
     if(b.innerHTML === `\$begin:math:text$${q.answer}\\$end:math:text$`) b.classList.add("correct");
