@@ -90,7 +90,7 @@ async function loadCSV(){
     startQuiz();
   }catch(e){
     console.error(e);
-    document.getElementById("question").innerText="題庫讀取失敗";
+    document.getElementById("question").innerHTML="題庫讀取失敗";
   }
 }
 
@@ -111,7 +111,7 @@ function showQuestion(){
     return;
   }
   const q=quizData[current];
-  document.getElementById("question").innerText=q.question;
+  document.getElementById("question").innerHTML=q.question;
   const optionsDiv=document.getElementById("options");
   optionsDiv.innerHTML="";
   const opts=[...q.options];
@@ -119,7 +119,7 @@ function showQuestion(){
   opts.forEach(opt=>{
     const btn=document.createElement("button");
     btn.className="option";
-    btn.innerText=opt;
+    btn.innerHTML=opt;
     btn.onclick=()=>checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
@@ -132,8 +132,8 @@ function checkAnswer(selected){
   const q=quizData[current];
   const buttons=document.querySelectorAll(".option");
   buttons.forEach(b=>{
-    if(b.innerText===q.answer) b.classList.add("correct");
-    else if(b.innerText===selected && selected!==q.answer) b.classList.add("wrong");
+    if(b.innerHTML===q.answer) b.classList.add("correct");
+    else if(b.innerHTML===selected && selected!==q.answer) b.classList.add("wrong");
   });
 
   if(selected===q.answer){
@@ -149,8 +149,8 @@ function checkAnswer(selected){
 
 // 更新進度與分數
 function updateProgress(){
-  document.getElementById("progress").innerText=`${current}/${quizData.length}`;
-  document.getElementById("score").innerText=`分數: ${score}`;
+  document.getElementById("progress").innerHTML=`${current}/${quizData.length}`;
+  document.getElementById("score").innerHTML=`分數: ${score}`;
   document.getElementById("progressFill").style.width=`${(current/quizData.length)*100}%`;
 }
 
@@ -160,14 +160,14 @@ function showHint(){
   if(!q || hintUsed) return;
   hintUsed=true;
   const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
-  document.getElementById("question").innerText=`${q.question} → 提示：${hint}`;
+  document.getElementById("question").innerHTML=`${q.question} → 提示：${hint}`;
 }
 
 // 結束畫面
 function showEndScreen(){
   document.getElementById("quiz").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
-  document.getElementById("resultText").innerText=`完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，分數 ${score}`;
+  document.getElementById("resultText").innerHTML=`完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，分數 ${score}`;
   const retryBtn=document.getElementById("retryWrong");
   if(wrongQuestions.length>0){
     retryBtn.style.display="block";
