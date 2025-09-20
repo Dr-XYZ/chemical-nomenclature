@@ -1,80 +1,96 @@
 category,question,answer,option1,option2,option3,option4
-compound,NaCl,Sodium chloride,Sodium chloride,KCl,CaCl2,MgCl2
-compound,CaCO3,Calcium carbonate,Calcium carbonate,Na2CO3,K2CO3,MgCO3
-compound,KNO3,Potassium nitrate,Potassium nitrate,NaNO3,K2SO4,Ca(NO3)2
-compound,MgO,Magnesium oxide,Magnesium oxide,CaO,Al2O3,Na2O
-compound,Na2CO3,Sodium carbonate,Sodium carbonate,NaHCO3,K2CO3,CaCO3
-compound,NaOH,Sodium hydroxide,Sodium hydroxide,KOH,Ca(OH)2,Mg(OH)2
-compound,Ca(OH)2,Calcium hydroxide,Calcium hydroxide,NaOH,KOH,Mg(OH)2
-compound,K2SO4,Potassium sulfate,Potassium sulfate,Na2SO4,CaSO4,MgSO4
-compound,MgCl2,Magnesium chloride,Magnesium chloride,CaCl2,NaCl,KCl
-compound,Al2O3,Aluminum oxide,Al2O3,Al(OH)3,MgO,CaO
-compound,HCl,Hydrochloric acid,Hydrochloric acid,H2SO4,HNO3,CH3COOH
-compound,H2SO4,Sulfuric acid,Sulfuric acid,HCl,HNO3,H3PO4
-acid,HNO3,Nitric acid,Nitric acid,HNO2,HClO,H3PO4
-acid,CH3COOH,Acetic acid,Acetic acid,HCOOH,C6H8O7,H2SO4
-acid,H3PO4,Phosphoric acid,Phosphoric acid,HNO3,H2SO4,HCl
-acid,H2CO3,Carbonic acid,Carbonic acid,H2SO4,HCl,HNO3
-acid,H2SO3,Sulfurous acid,Sulfurous acid,H2SO4,HCl,H3PO4
-acid,HNO2,Nitrous acid,Nitrous acid,HNO3,HBr,H3PO4
-acid,HBr,Hydrobromic acid,Hydrobromic acid,HCl,HI,H2S
-acid,HF,Hydrofluoric acid,Hydrofluoric acid,HCl,HBr,HI
-ion,Ca2+,Calcium ion,Calcium ion,Magnesium ion,Sodium ion,Potassium ion
-ion,Cu2+,Copper(II) ion,Copper(II) ion,Copper(I) ion,Fe2+,Fe3+
-ion,PO43-,Phosphate ion,Phosphate ion,PO33-,SO42-,NO3-
-ion,OH-,Hydroxide ion,Hydroxide ion,O2-,Cl-,NO2-
-ion,SO42-,Sulfate ion,Sulfate ion,Sulfite ion,Carbonate ion,Nitrate ion
-ion,NO3-,Nitrate ion,Nitrate ion,Sulfate ion,Chloride ion,Phosphate ion
-ion,Cl-,Chloride ion,Chloride ion,Bromide ion,Iodide ion,Nitrate ion
-ion,Na+,Sodium ion,Sodium ion,K+,Ca2+,Mg2+
-ion,K+,Potassium ion,Potassium ion,Na+,Ca2+,Mg2+
-ion,Fe2+,Iron(II) ion,Iron(II) ion,Fe3+,Cu2+,Cu+
-ion,Fe3+,Iron(III) ion,Iron(III) ion,Fe2+,Cu2+,Cu+
-ion,Mg2+,Magnesium ion,Magnesium ion,Ca2+,Na+,K+
-element,H,Hydrogen,Hydrogen,Oxygen,Carbon,Nitrogen
-element,O,Oxygen,Oxygen,Hydrogen,Carbon,Nitrogen
-element,C,Carbon,Carbon,Oxygen,Hydrogen,Nitrogen
-element,N,Nitrogen,Nitrogen,Oxygen,Hydrogen,Carbon
-element,Cl,Chlorine,Chlorine,Fluorine,Bromine,Iodine
-compound,NaHCO3,Sodium bicarbonate,Sodium bicarbonate,Na2CO3,CaCO3,K2CO3
-compound,KCl,Potassium chloride,KCl,KBr,NaCl,CaCl2
-compound,CuSO4,Copper(II) sulfate,CuSO4,Cu2SO4,ZnSO4,Fe2(SO4)3
-compound,FeCl3,Iron(III) chloride,FeCl3,FeCl2,Ferric chloride,Ferrous chloride
-compound,NH4Cl,Ammonium chloride,NH4Cl,NH4Br,KCl,NaCl
-compound,NaNO3,Sodium nitrate,NaNO3,KNO3,Ca(NO3)2,Mg(NO3)2
-compound,KBr,Potassium bromide,KBr,KI,KCl,NaBr
-compound,CaSO4,Calcium sulfate,CaSO4,CaSO3,MgSO4,K2SO4
-compound,H2O,Water,H2O,H2O2,O2,H2S
-compound,H2O2,Hydrogen peroxide,H2O2,H2O,O2,H2S
-compound,Na2SO4,Sodium sulfate,Na2SO4,Na2SO3,K2SO4,CaSO4
-compound,K2CO3,Potassium carbonate,K2CO3,Na2CO3,CaCO3,MgCO3
-compound,CaCl2,Calcium chloride,CaCl2,MgCl2,NaCl,KCl
-compound,MgSO4,Magnesium sulfate,MgSO4,CaSO4,Na2SO4,K2SO4
-compound,AlCl3,Aluminum chloride,AlCl3,AlBr3,AlI3,MgCl2
-compound,FeSO4,Iron(II) sulfate,FeSO4,Fe2(SO4)3,CuSO4,ZnSO4
-compound,Fe2(SO4)3,Iron(III) sulfate,Fe2(SO4)3,FeSO4,CuSO4,ZnSO4
-compound,CuCl,Cuprous chloride,CuCl,CuCl2,ZnCl2,FeCl2
-compound,CuCl2,Cupric chloride,CuCl2,CuCl,ZnCl2,FeCl3
-acid,H2Se,Selenohydric acid,H2Se,H2S,HCl,H2Te
-acid,HIO3,Iodic acid,HIO3,HIO2,HIO,HIO4
-acid,HIO4,Periodic acid,HIO4,HIO3,HIO2,HIO
-acid,HIO2,Iodous acid,HIO2,HIO3,HIO,HIO4
-acid,HIO,Hypoiodous acid,HIO,HIO2,HIO3,HIO4
-ion,SeO42-,Selenate ion,SeO42-,SeO32-,SO42-,PO43-
-ion,SeO32-,Selenite ion,SeO32-,SeO42-,SO32-,SO42-
-ion,IO4-,Periodate ion,IO4-,IO3-,IO2-,IO-
-ion,IO3-,Iodate ion,IO3-,IO4-,IO2-,IO-
-ion,IO2-,Iodite ion,IO2-,IO3-,IO4-,IO-
-ion,IO-,Hypoiodite ion,IO-,IO2-,IO3-,IO4-
-compound,Potassium nitrate,KNO3,KNO3,NaNO3,K2SO4,Ca(NO3)2
-compound,Sodium hypochlorite,NaClO,NaClO,NaClO2,NaClO3,NaClO4
-compound,Calcium hypochlorite,Ca(ClO)2,Ca(ClO)2,Ca(ClO)3,CaClO,CaCl2
-compound,Magnesium hydroxide,Mg(OH)2,Mg(OH)2,Ca(OH)2,NaOH,KOH
-acid,Formic acid,HCOOH,HCOOH,CH3COOH,H3PO4,HNO2
-acid,Citric acid,C6H8O7,C6H8O7,H3PO4,H2SO4,CH3COOH
-ion,Zn2+,Zinc ion,Zn2+,Cu2+,Fe2+,Mg2+
-ion,Ag+,Silver ion,Ag+,Cu+,Na+,K+
-ion,Br-,Bromide ion,Br-,Cl-,I-,F-
-ion,I-,Iodide ion,I-,Br-,Cl-,F-
-ion,Mn2+,Manganese(II) ion,Mn2+,Mn3+,Fe2+,Fe3+
-ion,MnO4-,Permanganate ion,MnO4-,MnO42-,SO42-,ClO4-
+english_to_formula,Dihydrogen monoxide,H2O,H2O,H2O2,HO,H2
+english_to_formula,Carbon dioxide,CO2,CO2,CO,C2O,CO3
+english_to_formula,Sodium chloride,NaCl,NaCl,NaClO,NaClO3,NaH
+english_to_formula,Calcium carbonate,CaCO3,CaCO3,CaO,Na2CO3,K2CO3
+english_to_formula,Potassium nitrate,KNO3,KNO3,KNO2,KNO,KNO4
+english_to_formula,Sulfuric acid,H2SO4,H2SO4,H2SO3,H2S,H2SO5
+english_to_formula,Methane,CH4,CH4,C2H6,CH3,CH2O
+english_to_formula,Nitrogen trihydride,NH3,NH3,NH4,N2H4,NH2
+english_to_formula,Sodium hydrogen carbonate,NaHCO3,NaHCO3,Na2CO3,NaOH,NaClO
+english_to_formula,Hydrogen chloride,HCl,HCl,HBr,HI,H2Cl
+english_to_formula,Sodium hydroxide,NaOH,NaOH,NaH,Na2O,NaOCl
+english_to_formula,Acetic acid,CH3COOH,CH3COOH,C2H5OH,CH3CHO,CH3COOCH3
+english_to_formula,Iron(III) oxide,Fe2O3,Fe2O3,FeO,Fe3O4,FeO2
+english_to_formula,Ethanol,C2H5OH,C2H5OH,CH3OH,C3H7OH,C4H9OH
+english_to_formula,Glucose,C6H12O6,C6H12O6,C12H22O11,C5H10O5,C3H6O3
+english_to_formula,Potassium chloride,KCl,KCl,KBr,KNO3,NaCl
+english_to_formula,Sodium sulfate,Na2SO4,Na2SO4,Na2S2O3,NaSO3,NaHSO4
+english_to_formula,Calcium hydroxide,Ca(OH)2,Ca(OH)2,CaO,CaO2,CaH2
+english_to_formula,Nitric acid,HNO3,HNO3,HNO2,H3NO4,H2NO3
+english_to_formula,Sodium carbonate,Na2CO3,Na2CO3,NaHCO3,Na2O,Na2SO4
+english_to_formula,Phosphoric acid,H3PO4,H3PO4,H3PO3,HPO3,H4P2O7
+english_to_formula,Barium sulfate,BaSO4,BaSO4,BaS,BaSO3,BaS2O8
+english_to_formula,Magnesium hydroxide,Mg(OH)2,Mg(OH)2,MgO,MgO2,MgH2
+english_to_formula,Hydrogen peroxide,H2O2,H2O2,H2O,H2O3,HO2
+english_to_formula,Ammonium chloride,NH4Cl,NH4Cl,NH3Cl,N2H5Cl,NH4Br
+english_to_formula,Copper(II) sulfate,CuSO4,CuSO4,Cu2SO4,CuSO3,CuS
+english_to_formula,Zinc oxide,ZnO,ZnO,ZnO2,Zn2O,ZnOH
+english_to_formula,Silver nitrate,AgNO3,AgNO3,AgNO2,AgN3,Ag2NO3
+english_to_formula,Lead(II) nitrate,Pb(NO3)2,Pb(NO3)2,PbNO3,Pb(NO2)2,PbN2O6
+english_to_formula,Sodium hypochlorite,NaClO,NaClO,NaClO2,NaClO3,NaCl
+english_to_formula,Potassium permanganate,KMnO4,KMnO4,K2MnO4,KMnO3,KMnO2
+english_to_formula,Hydrobromic acid,HBr,HBr,HCl,HI,H2Br
+english_to_formula,Hypophosphorous acid,H3PO2,H3PO2,H3PO3,H3PO4,H3P2O6
+english_to_formula,Formic acid,HCOOH,HCOOH,CH3COOH,CH3CHO,HCOOCH3
+english_to_formula,Nitrous acid,HNO2,HNO2,HNO3,H3NO2,H2NO2
+english_to_formula,Hydrofluoric acid,HF,HF,HCl,HBr,H2F2
+english_to_formula,Phosphorous acid,H3PO3,H3PO3,H3PO4,H3PO2,H4P2O5
+english_to_formula,Sulfurous acid,H2SO3,H2SO3,H2SO4,H2S,H2S2O5
+english_to_formula,Calcium chloride,CaCl2,CaCl2,CaCl,CaCl3,Ca2Cl2
+english_to_formula,Magnesium sulfate,MgSO4,MgSO4,MgS,MgSO3,Mg2SO4
+english_to_formula,Aluminum oxide,Al2O3,Al2O3,AlO,AlO3,Al2O
+english_to_formula,Potassium hydroxide,KOH,KOH,K2O,KOH2,KOH3
+english_to_formula,Sodium nitrite,NaNO2,NaNO2,NaNO3,NaNO,NaN2O2
+english_to_formula,Copper(I) oxide,Cu2O,Cu2O,CuO,CuO2,Cu2O3
+english_to_formula,Manganese(IV) oxide,MnO2,MnO2,Mn2O3,MnO,Mn2O7
+english_to_formula,Ammonium sulfate,(NH4)2SO4,(NH4)2SO4,NH4SO4,NH4)2SO3,(NH4)2SO3
+english_to_formula,Sodium thiosulfate,Na2S2O3,Na2S2O3,Na2SO3,NaS2O3,Na2S2O4
+english_to_formula,Hydrogen sulfide,H2S,H2S,H2SO3,H2SO4,H2S2
+english_to_formula,Calcium nitrate,Ca(NO3)2,Ca(NO3)2,CaNO3,Ca(NO2)2,CaN2O6
+english_to_formula,Boric acid,H3BO3,H3BO3,H3BO2,H3B2O3,H4BO4
+english_to_formula,Sodium phosphate,Na3PO4,Na3PO4,Na2PO4,NaH2PO4,Na2HPO4
+english_to_formula,Potasium bicarbonate,KHCO3,KHCO3,K2CO3,KOH,KHCO2
+english_to_formula,Chromium(III) oxide,Cr2O3,Cr2O3,CrO,CrO3,CrO2
+english_to_formula,Nickel(II) sulfate,NiSO4,NiSO4,NiS,NiSO3,Ni2SO4
+english_to_formula,Zinc sulfate,ZnSO4,ZnSO4,ZnS,ZnSO3,Zn2SO4
+english_to_formula,Iron(II) sulfate,FeSO4,FeSO4,Fe2(SO4)3,FeSO3,FeS
+english_to_formula,Lead(II) oxide,PbO,PbO,PbO2,Pb2O,Pb2O3
+english_to_formula,Silver oxide,Ag2O,Ag2O,AgO,AgO2,Ag2O3
+english_to_formula,Hydrogen cyanide,H CN,H CN,H CN2,H2C,H3CN
+english_to_formula,Sodium cyanide,NaCN,NaCN,NaC2,NaC,NH4CN
+english_to_formula,Potassium cyanide,KCN,KCN,K2CN,KHCN,KNC
+english_to_formula,Ammonium nitrate,NH4NO3,NH4NO3,NH4NO2,N2H4O3,NH3NO3
+english_to_formula,Calcium phosphate,Ca3(PO4)2,Ca3(PO4)2,Ca(PO4)2,Ca2(PO4)3,Ca3(PO3)2
+english_to_formula,Magnesium nitrate,Mg(NO3)2,Mg(NO3)2,MgNO3,Mg(NO2)2,Mg2(NO3)2
+formula_to_english,H2O,Dihydrogen monoxide,Dihydrogen monoxide,Hydrogen oxide,Hydrogen peroxide,Hydroxide
+formula_to_english,CO2,Carbon dioxide,Carbon dioxide,Carbon monoxide,Carbon trioxide,Carbon oxide
+formula_to_english,NaCl,Sodium chloride,Sodium chloride,Sodium chlorate,Sodium chlorite,Sodium hydron
+formula_to_english,CaCO3,Calcium carbonate,Calcium carbonate,Na2CO3,K2CO3,MgCO3
+formula_to_english,KNO3,Potassium nitrate,Potassium nitrate,Potassium nitric,Potassium nitraous,Potassium nitrated
+formula_to_english,H2SO4,Sulfuric acid,Sulfuric acid,Sulfurous acid,H2S,Hydrosulfuric acid
+formula_to_english,CH4,Methane,Methane,Methyl,Ethane,Propane
+formula_to_english,NH3,Nitrogen trihydride,Nitrogen trihydride,Ammonia,Nitric oxide,Nitrous oxide
+formula_to_english,NaHCO3,Sodium hydrogen carbonate,Sodium hydrogen carbonate,Sodium carbonate,Sodium hydroxide,Sodium hypochlorite
+formula_to_english,HCl,Hydrogen chloride,Hydrogen chloride,Hydrochloric acid,Chlorous acid,Chloric acid
+formula_to_english,NaOH,Sodium hydroxide,Sodium hydroxide,Sodium oxide,Sodium hydride,Sodium hypochlorite
+formula_to_english,CH3COOH,Ethanoic acid,Ethanoic acid,Acetic acid,Formic acid,Propionic acid
+formula_to_english,Fe2O3,Iron(III) oxide,Iron(III) oxide,Iron(II) oxide,Ferric hydroxide,Iron oxide
+formula_to_english,C2H5OH,Ethanol,Ethanol,Methanol,Propanol,Butanol
+formula_to_english,C6H12O6,Glucose,Glucose,Fructose,Sucrose,Lactose
+formula_to_english,KCl,Potassium chloride,Potassium chloride,Potassium chlorate,Potassium hydride,Potassium hydroxide
+formula_to_english,Na2SO4,Sodium sulfate,Sodium sulfate,Sodium sulfite,Sodium sulfide,Sodium bisulfate
+formula_to_english,Ca(OH)2,Calcium hydroxide,Calcium hydroxide,Calcium oxide,Calcium peroxide,Calcium carbonate
+formula_to_english,HNO3,Nitric acid,Nitric acid,Nitrous acid,Hydroxynitric acid,Nitric oxide
+formula_to_english,Na2CO3,Sodium carbonate,Sodium carbonate,Sodium bicarbonate,Sodium oxide,Sodium chlorate
+formula_to_english,H3PO4,Phosphoric acid,Phosphoric acid,Phosphorous acid,HPO3,H4P2O7
+formula_to_english,BaSO4,Barium sulfate,Barium sulfate,Barium sulfide,BaSO3,BaS2O8
+formula_to_english,Mg(OH)2,Magnesium hydroxide,Magnesium hydroxide,MgO,MgO2,MgH2
+formula_to_english,H2O2,Hydrogen peroxide,Hydrogen peroxide,H2O,H2O3,HO2
+formula_to_english,NH4Cl,Ammonium chloride,Ammonium chloride,NH3Cl,N2H5Cl,NH4Br
+formula_to_english,CuSO4,Copper(II) sulfate,Copper(II) sulfate,Cu2SO4,CuSO3,CuS
+formula_to_english,ZnO,Zinc oxide,Zinc oxide,ZnO2,Zn2O,ZnOH
+formula_to_english,AgNO3,Silver nitrate,Silver nitrate,AgNO2,AgN3,Ag2NO3
+formula_to_english,Pb(NO3)2,Lead(II) nitrate,Lead(II) nitrate,PbNO3,Pb(NO2)2,PbN2O6
+formula_to_english,NaClO,Sodium hypochlorite,Sodium hypochlorite,NaClO2,NaClO3,NaCl
+formula_to_english,KMnO4,Potassium permanganate,Potassium permanganate,K2MnO4,KMnO3,KMnO2
