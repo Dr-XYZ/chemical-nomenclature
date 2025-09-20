@@ -53,6 +53,13 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
 let allData=[], quizData=[], wrongQuestions=[];
 let current=0, correct=0, answered=0, hintUsed=false;
 
+// 將 CSV 或 escape HTML 解碼成 HTML
+function decodeHTML(str){
+  const txt = document.createElement("textarea");
+  txt.innerHTML = str;
+  return txt.value;
+}
+
 // CSV 解析
 function parseCSV(text){
   const lines=text.trim().split("\n").map(r=>r.replace(/^\uFEFF/, ''));
@@ -62,9 +69,9 @@ function parseCSV(text){
     if(cols.length<7){ console.warn("欄位不足:", lines[i]); continue; }
     data.push({
       category: cols[0]||"unknown",
-      question: cols[1]||"無題目",
-      answer: cols[2]||"無答案",
-      options: cols.slice(3,7).map(o=>o||"無選項")
+      question: decodeHTML(cols[1]||"無題目"),
+      answer: decodeHTML(cols[2]||"無答案"),
+      options: cols.slice(3,7).map(o=>decodeHTML(o||"無選項"))
     });
   }
   return data;
