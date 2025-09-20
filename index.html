@@ -12,7 +12,7 @@ body { margin:0; font-family:system-ui, Arial, sans-serif; background:#f9fafb; c
 .main { flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:1rem; }
 #question { font-size:1.6rem; text-align:center; margin:1rem 0; flex:1; display:flex; justify-content:center; align-items:center; }
 .options { display:flex; flex-direction:column; gap:0.8rem; width:100%; }
-button.option { flex:1; padding:1rem; font-size:1.2rem; border:none; border-radius:8px; background:#f0f0f0; transition:background 0.2s, transform 0.15s; text-align:center; }
+button.option { flex:1; padding:1rem; font-size:1.2rem; border:none; border-radius:8px; background:#f0f0f0; transition:background 0.2s, transform 0.15s; text-align:center; cursor:pointer; }
 button.option:active { transform:scale(0.98); }
 .correct { background:#a6e3a1 !important; }
 .wrong { background:#f6a6a6 !important; }
@@ -114,7 +114,8 @@ function showQuestion(){
   opts.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`; // MathJax inline
+    btn.dataset.value = opt;  // 用 dataset 儲存原始答案
+    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`; 
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
@@ -130,8 +131,8 @@ function checkAnswer(selected){
   answered++;
 
   buttons.forEach(b=>{
-    if(b.innerHTML === `\$begin:math:text$${q.answer}\\$end:math:text$`) b.classList.add("correct");
-    else if(b.innerHTML === `\$begin:math:text$${selected}\\$end:math:text$` && selected!==q.answer) b.classList.add("wrong");
+    if(b.dataset.value === q.answer) b.classList.add("correct");
+    else if(b.dataset.value === selected && selected !== q.answer) b.classList.add("wrong");
     b.disabled = true;
   });
 
