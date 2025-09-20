@@ -3,3 +3,13 @@ compound,NaCl,Sodium chloride,Sodium chloride,Potassium iodide,Calcium carbonate
 acid,H2SO4,Sulfuric acid,Hydrochloric acid,Nitric acid,Sulfuric acid,Acetic acid
 ion,Fe2+,Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous oxide,Ferric ion
 element,Oxygen,O,O,N,Cl,F
+compound,NaCl,Sodium chloride,Sodium chloride,Potassium iodide,Calcium carbonate,Magnesium oxide
+compound,CaCO3,Calcium carbonate,Calcium carbonate,Sodium carbonate,Magnesium hydroxide,Potassium nitrate
+compound,KNO3,Potassium nitrate,Potassium nitrate,Sodium nitrate,Ammonium sulfate,Magnesium nitrate
+acid,HCl,Hydrochloric acid,Hydrochloric acid,Sulfuric acid,Nitric acid,Acetic acid
+acid,H2SO4,Sulfuric acid,Hydrochloric acid,Nitric acid,Sulfuric acid,Carbonic acid
+acid,HNO3,Nitric acid,Nitric acid,Phosphoric acid,Acetic acid,Sulfurous acid
+ion,Fe2+,Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous oxide,Ferric ion
+ion,SO4^2-,Sulfate ion,Sulfite ion,Sulfate ion,Carbonate ion,Nitrate ion
+element,O,O,O,N,Cl,F
+element,Cl,Chlorine,Oxygen,Chlorine,Carbon,Fluorine
