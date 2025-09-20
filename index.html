@@ -138,11 +138,20 @@ function checkAnswer(selected){
     b.disabled = true; // 答過不能再點
   });
 
-  if(selected !== q.answer) wrongQuestions.push(q);
+  // 更新分數
+  if(selected === q.answer){
+    score += 10; 
+    correct++;
+  } else {
+    score -= 5; 
+    wrongQuestions.push(q);
+  }
+
+  // 更新進度/分數顯示
+  updateProgress();
 
   // 加「下一題」按鈕
   addNextButton();
-  updateProgress();
 }
 
 // 顯示「下一題」按鈕
