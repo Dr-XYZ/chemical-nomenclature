@@ -16,15 +16,14 @@ button.option { flex:1; padding:1rem; font-size:1.2rem; border:none; border-radi
 button.option:active { transform:scale(0.98); }
 .correct { background:#a6e3a1 !important; }
 .wrong { background:#f6a6a6 !important; }
-button.option sub, button.option sup { font-size:0.8em; }
-button.option sup { vertical-align: top; }
-button.option sub { vertical-align: sub; }
 .footer { padding-top:0.5rem; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center; font-size:1rem; }
 button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius:6px; background:#4a90e2; color:white; cursor:pointer; }
 .end-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; flex:1; text-align:center; }
 .end-screen h2 { font-size:1.4rem; }
 .hidden { display:none !important; }
 </style>
+<!-- 載入 MathJax -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 <div class="app">
@@ -53,13 +52,6 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
 let allData=[], quizData=[], wrongQuestions=[];
 let current=0, correct=0, answered=0, hintUsed=false;
 
-// 將 CSV 或 escape HTML 解碼成 HTML
-function decodeHTML(str){
-  const txt = document.createElement("textarea");
-  txt.innerHTML = str;
-  return txt.value;
-}
-
 // CSV 解析
 function parseCSV(text){
   const lines=text.trim().split("\n").map(r=>r.replace(/^\uFEFF/, ''));
@@ -69,9 +61,9 @@ function parseCSV(text){
     if(cols.length<7){ console.warn("欄位不足:", lines[i]); continue; }
     data.push({
       category: cols[0]||"unknown",
-      question: decodeHTML(cols[1]||"無題目"),
-      answer: decodeHTML(cols[2]||"無答案"),
-      options: cols.slice(3,7).map(o=>decodeHTML(o||"無選項"))
+      question: cols[1]||"無題目",
+      answer: cols[2]||"無答案",
+      options: cols.slice(3,7).map(o=>o||"無選項")
     });
   }
   return data;
@@ -118,7 +110,7 @@ function showQuestion(){
     return;
   }
   const q = quizData[current];
-  document.getElementById("question").innerHTML = q.question;
+  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`;
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = "";
   const opts = [...q.options];
@@ -126,15 +118,17 @@ function showQuestion(){
   opts.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.innerHTML = opt.trim();
+    btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`;
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
   hintUsed = false;
   updateProgress();
+  // 觸發 MathJax 渲染
+  MathJax.typesetPromise();
 }
 
-// 判斷答案，按選項即增加已回答題數
+// 判斷答案
 function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
@@ -143,8 +137,8 @@ function checkAnswer(selected){
   answered++;
 
   buttons.forEach(b=>{
-    if(b.innerHTML === q.answer) b.classList.add("correct");
-    else if(b.innerHTML === selected && selected !== q.answer) b.classList.add("wrong");
+    if(b.innerHTML === `\$begin:math:text$${q.answer}\\$end:math:text$`) b.classList.add("correct");
+    else if(b.innerHTML === `\$begin:math:text$${selected}\\$end:math:text$` && selected !== q.answer) b.classList.add("wrong");
     b.disabled = true;
   });
 
@@ -153,6 +147,7 @@ function checkAnswer(selected){
 
   addNextButton();
   updateProgress();
+  MathJax.typesetPromise();
 }
 
 // 加「下一題」按鈕
@@ -181,7 +176,8 @@ function showHint(){
   if(!q || hintUsed) return;
   hintUsed = true;
   const hint = q.answer.slice(0,2) + "_".repeat(q.answer.length-2);
-  document.getElementById("question").innerHTML = `${q.question} → 提示：${hint}`;
+  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$ → 提示：\$begin:math:text$${hint}\\$end:math:text$`;
+  MathJax.typesetPromise();
 }
 
 // 結束畫面
