@@ -35,7 +35,7 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
     <div class="options" id="options"></div>
     <div class="footer">
       <span id="progress">0/0</span>
-      <span id="score">分數: 0</span>
+      <span id="score">分數: 0/0</span>
       <button class="control" onclick="showHint()">提示</button>
     </div>
   </div>
@@ -51,7 +51,7 @@ button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius
 
 <script>
 let allData=[], quizData=[], wrongQuestions=[];
-let current=0, correct=0, score=0, hintUsed=false;
+let current=0, correct=0, hintUsed=false;
 
 // CSV 解析
 function parseCSV(text){
@@ -98,7 +98,7 @@ async function loadCSV(){
 function startQuiz(useWrong=false){
   quizData=useWrong ? [...wrongQuestions] : [...allData];
   shuffleArray(quizData);
-  current=0; correct=0; score=0; wrongQuestions=[];
+  current=0; correct=0; wrongQuestions=[];
   document.getElementById("quiz").classList.remove("hidden");
   document.getElementById("endScreen").classList.add("hidden");
   showQuestion();
@@ -123,38 +123,28 @@ function showQuestion(){
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
-
   hintUsed = false;
   updateProgress();
 }
 
-// 判斷答案，等待使用者按下一題
+// 判斷答案，全部由使用者按下一題
 function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
   buttons.forEach(b=>{
     if(b.innerHTML === q.answer) b.classList.add("correct");
     else if(b.innerHTML === selected && selected !== q.answer) b.classList.add("wrong");
-    b.disabled = true; // 答過不能再點
+    b.disabled = true;
   });
 
-  // 更新分數
-  if(selected === q.answer){
-    score += 10; 
-    correct++;
-  } else {
-    score -= 5; 
-    wrongQuestions.push(q);
-  }
+  if(selected === q.answer) correct++;
+  else wrongQuestions.push(q);
 
-  // 更新進度/分數顯示
-  updateProgress();
-
-  // 加「下一題」按鈕
   addNextButton();
+  updateProgress();
 }
 
-// 顯示「下一題」按鈕
+// 加「下一題」按鈕
 function addNextButton(){
   const optionsDiv = document.getElementById("options");
   const nextBtn = document.createElement("button");
@@ -170,7 +160,7 @@ function addNextButton(){
 // 更新進度與分數
 function updateProgress(){
   document.getElementById("progress").innerText = `${current}/${quizData.length}`;
-  document.getElementById("score").innerText = `分數: ${score}`;
+  document.getElementById("score").innerText = `分數: ${correct}/${current}`;
   document.getElementById("progressFill").style.width = `${(current/quizData.length)*100}%`;
 }
 
@@ -187,7 +177,7 @@ function showHint(){
 function showEndScreen(){
   document.getElementById("quiz").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
-  document.getElementById("resultText").innerText = `完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，分數 ${score}`;
+  document.getElementById("resultText").innerText = `完成！正確率 ${(correct/quizData.length*100).toFixed(0)}%，已答題數 ${quizData.length}`;
   const retryBtn = document.getElementById("retryWrong");
   if(wrongQuestions.length>0){
     retryBtn.style.display="block";
