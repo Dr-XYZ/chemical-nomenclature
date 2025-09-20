@@ -9,41 +9,38 @@ body { margin:0; font-family:system-ui, Arial, sans-serif; background:#f9fafb; c
 .app { display:flex; flex-direction:column; height:100vh; width:100vw; overflow:hidden; }
 .progress-bar { height:6px; background:#ddd; flex-shrink:0; }
 .progress-fill { height:100%; background:#4a90e2; width:0%; transition:width 0.3s; }
-.main { flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:0.8rem; /* 減少 padding */ }
+.main { flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:0.8rem; }
 #question {
-  font-size:1.5rem; /* 稍微縮小字體 */
+  font-size:1.5rem;
   text-align:center;
-  margin:0.5rem 0; /* 減少 margin */
+  margin:0.5rem 0;
   flex:1;
   display:flex;
   justify-content:center;
   align-items:center;
-  overflow-y: auto; /* 允許問題內容滾動，以防過長 */
-  padding: 0.5rem; /* 增加內邊距防止內容貼邊 */
+  overflow-y: auto;
+  padding: 0.5rem;
 }
 .options {
   display:flex;
   flex-direction:column;
-  /* gap:0.6rem; */ /* 移除 gap，改用 margin-bottom */
   width:100%;
-  flex-shrink:0; /* 防止選項區域被壓縮 */
+  flex-shrink:0;
 }
 button.option {
   flex:1;
-  padding:0.8rem; /* 減少 padding */
-  font-size:1.1rem; /* 稍微縮小字體 */
+  padding:0.8rem;
+  font-size:1.1rem;
   border:none;
   border-radius:8px;
   background:#f0f0f0;
   transition:background 0.2s, transform 0.15s;
   text-align:center;
   cursor:pointer;
-  margin-bottom: 0.6rem; /* 添加底部間距 */
-  line-height: 1.3; /* 調整行高 */
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
 }
-button.option:last-child {
-  margin-bottom: 0; /* 最後一個選項按鈕不需要底部間距 */
-}
+button.option:last-child { margin-bottom: 0; }
 button.option:active { transform:scale(0.98); }
 .correct { background:#a6e3a1 !important; }
 .wrong { background:#f6a6a6 !important; }
@@ -54,7 +51,7 @@ button.option:active { transform:scale(0.98); }
   justify-content:space-between;
   align-items:center;
   font-size:1rem;
-  flex-shrink:0; /* 防止 footer 被壓縮 */
+  flex-shrink:0;
 }
 button.control {
   padding:0.6rem 1rem;
@@ -64,7 +61,7 @@ button.control {
   background:#4a90e2;
   color:white;
   cursor:pointer;
-  white-space: nowrap; /* 防止按鈕文字換行 */
+  white-space: nowrap;
 }
 .end-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; flex:1; text-align:center; }
 .end-screen h2 { font-size:1.4rem; }
@@ -72,22 +69,20 @@ button.control {
 
 /* 針對 MathJax 渲染的內容進行調整，防止溢出 */
 .MathJax {
-    overflow-x: auto; /* 允許 MathJax 內容水平滾動 */
-    max-width: 100%; /* 限制最大寬度 */
+    overflow-x: auto;
+    max-width: 100%;
 }
 </style>
 <script>
-// MathJax 配置：在載入 MathJax 之前進行配置
+// MathJax 配置
 window.MathJax = {
   tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']], // 啟用 $...$ 作為行內數學模式
-    displayMath: [['$$', '$$'], ['\\[', '\\]']], // 啟用 $$...$$ 作為顯示數學模式
-    processEscapes: true, // 允許在 TeX 語法中使用轉義字符
-    tags: 'ams' // 啟用 AMS 數學環境的標籤
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
+    tags: 'ams'
   },
-  svg: {
-    fontCache: 'global'
-  }
+  svg: { fontCache: 'global' }
 };
 </script>
 <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -103,7 +98,7 @@ window.MathJax = {
       <span id="progress">0/0</span>
       <span id="score">分數: 0/0</span>
       <button class="control" onclick="showHint()">提示</button>
-      <button class="control hidden" id="nextQuestionBtn">下一題</button> <!-- 將下一題按鈕移到 footer -->
+      <button class="control hidden" id="nextQuestionBtn">下一題</button>
     </div>
   </div>
 
@@ -119,7 +114,15 @@ window.MathJax = {
 <script>
 let allData=[], quizData=[], wrongQuestions=[];
 let current=0, correct=0, answered=0, hintUsed=false;
-const nextQuestionBtn = document.getElementById("nextQuestionBtn"); // 獲取下一題按鈕
+const nextQuestionBtn = document.getElementById("nextQuestionBtn");
+
+// 把文字包成 \text{...}，保留空格
+function latexText(str){
+  if(!str) return "";
+  // 先處理特殊字元，避免衝突
+  str = str.replace(/([{}_$&#%])/g, '\\$1');
+  return `\\text{${str}}`;
+}
 
 // CSV 解析
 function parseCSV(text){
@@ -169,7 +172,7 @@ function startQuiz(useWrong=false){
   current=0; correct=0; answered=0; wrongQuestions=[];
   document.getElementById("quiz").classList.remove("hidden");
   document.getElementById("endScreen").classList.add("hidden");
-  nextQuestionBtn.classList.add("hidden"); // 隱藏下一題按鈕
+  nextQuestionBtn.classList.add("hidden");
   showQuestion();
 }
 
@@ -177,24 +180,27 @@ function startQuiz(useWrong=false){
 function showQuestion(){
   if(current >= quizData.length){ showEndScreen(); return; }
   const q = quizData[current];
-  document.getElementById("question").innerHTML = `$${q.question}$`;
-  const optionsDiv = document.getElementById("options");
-  optionsDiv.innerHTML = ""; // 清空舊選項
 
+  const questionDiv = document.getElementById("question");
+  questionDiv.innerHTML = `$${latexText(q.question)}$`;
+
+  const optionsDiv = document.getElementById("options");
+  optionsDiv.innerHTML = "";
   const opts = [...q.options];
   shuffleArray(opts);
   opts.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option";
     btn.dataset.value = opt;
-    btn.innerHTML = `$${opt}$`;
+    btn.innerHTML = `$${latexText(opt)}$`;
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
   });
+
   hintUsed=false;
-  nextQuestionBtn.classList.add("hidden"); // 隱藏下一題按鈕
+  nextQuestionBtn.classList.add("hidden");
   updateProgress();
-  MathJax.typesetPromise([document.getElementById("question"), optionsDiv]);
+  MathJax.typesetPromise([questionDiv, optionsDiv]);
 }
 
 // 檢查答案
@@ -206,19 +212,19 @@ function checkAnswer(selected){
   buttons.forEach(b=>{
     if(b.dataset.value === q.answer) b.classList.add("correct");
     else if(b.dataset.value === selected && selected !== q.answer) b.classList.add("wrong");
-    b.disabled = true; // 禁用所有選項
+    b.disabled = true;
   });
 
   if(selected===q.answer) correct++;
   else wrongQuestions.push(q);
 
-  nextQuestionBtn.classList.remove("hidden"); // 顯示下一題按鈕
-  nextQuestionBtn.onclick = () => { current++; showQuestion(); }; // 綁定下一題事件
+  nextQuestionBtn.classList.remove("hidden");
+  nextQuestionBtn.onclick = () => { current++; showQuestion(); };
   updateProgress();
   MathJax.typesetPromise([document.getElementById("options")]);
 }
 
-// 更新進度分數
+// 更新進度
 function updateProgress(){
   document.getElementById("progress").innerText = `${current+1}/${quizData.length}`;
   document.getElementById("score").innerText = `分數: ${correct}/${answered}`;
@@ -231,8 +237,9 @@ function showHint(){
   if(!q || hintUsed) return;
   hintUsed=true;
   const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
-  document.getElementById("question").innerHTML = `$${q.question}$ → 提示：$${hint}$`;
-  MathJax.typesetPromise([document.getElementById("question")]);
+  const questionDiv = document.getElementById("question");
+  questionDiv.innerHTML = `$${latexText(q.question)}$ → 提示：$${latexText(hint)}$`;
+  MathJax.typesetPromise([questionDiv]);
 }
 
 // 結束畫面
