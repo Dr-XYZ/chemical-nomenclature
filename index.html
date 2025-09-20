@@ -10,71 +10,21 @@ body { margin:0; font-family:system-ui, Arial, sans-serif; background:#f9fafb; c
 .progress-bar { height:6px; background:#ddd; flex-shrink:0; }
 .progress-fill { height:100%; background:#4a90e2; width:0%; transition:width 0.3s; }
 .main { flex:1; display:flex; flex-direction:column; justify-content:space-between; padding:0.8rem; }
-#question {
-  font-size:1.5rem;
-  text-align:center;
-  margin:0.5rem 0;
-  flex:1;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow-y: auto;
-  padding: 0.5rem;
-}
-.options {
-  display:flex;
-  flex-direction:column;
-  width:100%;
-  flex-shrink:0;
-}
-button.option {
-  flex:1;
-  padding:0.8rem;
-  font-size:1.1rem;
-  border:none;
-  border-radius:8px;
-  background:#f0f0f0;
-  transition:background 0.2s, transform 0.15s;
-  text-align:center;
-  cursor:pointer;
-  margin-bottom: 0.6rem;
-  line-height: 1.3;
-}
-button.option:last-child { margin-bottom: 0; }
+#question { font-size:1.5rem; text-align:center; margin:0.5rem 0; flex:1; display:flex; justify-content:center; align-items:center; overflow-y:auto; padding:0.5rem; }
+.options { display:flex; flex-direction:column; width:100%; flex-shrink:0; }
+button.option { flex:1; padding:0.8rem; font-size:1.1rem; border:none; border-radius:8px; background:#f0f0f0; transition:background 0.2s, transform 0.15s; text-align:center; cursor:pointer; margin-bottom:0.6rem; line-height:1.3; }
+button.option:last-child { margin-bottom:0; }
 button.option:active { transform:scale(0.98); }
 .correct { background:#a6e3a1 !important; }
 .wrong { background:#f6a6a6 !important; }
-.footer {
-  padding-top:0.5rem;
-  border-top:1px solid #eee;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:1rem;
-  flex-shrink:0;
-}
-button.control {
-  padding:0.6rem 1rem;
-  font-size:1rem;
-  border:none;
-  border-radius:6px;
-  background:#4a90e2;
-  color:white;
-  cursor:pointer;
-  white-space: nowrap;
-}
+.footer { padding-top:0.5rem; border-top:1px solid #eee; display:flex; justify-content:space-between; align-items:center; font-size:1rem; flex-shrink:0; }
+button.control { padding:0.6rem 1rem; font-size:1rem; border:none; border-radius:6px; background:#4a90e2; color:white; cursor:pointer; white-space:nowrap; }
 .end-screen { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1rem; flex:1; text-align:center; }
 .end-screen h2 { font-size:1.4rem; }
 .hidden { display:none !important; }
-
-/* 針對 MathJax 渲染的內容進行調整 */
-.MathJax {
-    overflow-x: auto;
-    max-width: 100%;
-}
+.MathJax { overflow-x: auto; max-width: 100%; }
 </style>
 <script>
-// MathJax 配置
 window.MathJax = {
   tex: {
     inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -116,52 +66,100 @@ let allData=[], quizData=[], wrongQuestions=[];
 let current=0, correct=0, answered=0, hintUsed=false;
 const nextQuestionBtn = document.getElementById("nextQuestionBtn");
 
-// ✅ 專門處理 LaTeX 的函式
+// 嚴格遵守 LaTeX 規則的 latexText()
+// - 非上下標文字一律包成 \text{...}（以保留空格）
+// - 遇到 _ 或 ^：若後面有 { }，抓整個大括號內容；否則只取下一個 token（單一字元或控制序列 \cmd）
 function latexText(str){
   if(!str) return "";
-
   let out = "";
   let i = 0;
+  let acc = ""; // 累積普通文字
+
+  function flushAcc(){
+    if(!acc) return;
+    // 跳脫可能造成問題的字元（不包含 _ ^，因為它們不會在 acc 中）
+    const seg = acc.replace(/([{}$&%#\\])/g, "\\$1");
+    out += "\\text{" + seg + "}";
+    acc = "";
+  }
 
   while(i < str.length){
     const ch = str[i];
 
-    if(ch === "_" || ch === "^"){  
-      const op = ch;  
+    if(ch === '_' || ch === '^'){
+      // 遇到上下標，先 flush 累積文字
+      flushAcc();
+      const op = ch;
       i++;
-      if(i < str.length && str[i] === "{"){  
-        let braceCount = 1, j = i+1;
-        while(j < str.length && braceCount > 0){
-          if(str[j] === "{") braceCount++;
-          else if(str[j] === "}") braceCount--;
+      if(i >= str.length){
+        // 結尾 stray 符號: 把它當字面輸出（escape）
+        out += (op === '_' ? '\\_' : '\\^');
+        break;
+      }
+
+      // 若接大括號，取整個大括號內容（遵守成對匹配）
+      if(str[i] === '{'){
+        let j = i + 1;
+        let brace = 1;
+        while(j < str.length && brace > 0){
+          if(str[j] === '{') brace++;
+          else if(str[j] === '}') brace--;
           j++;
         }
-        out += op + str.slice(i, j);
+        // content 在 i+1 .. j-2（slice end 為 j-1)
+        const content = str.slice(i+1, j-1);
+        // 內部直接做最小跳脫（保留使用者所寫），不再把整段包 \text
+        const processed = content.replace(/([\\{}$&%#])/g, "\\$1");
+        out += op + "{" + processed + "}";
         i = j;
       } else {
-        let j = i;
-        while(j < str.length && /[A-Za-z0-9]/.test(str[j])) j++;
-        out += op + "{" + str.slice(i, j) + "}";
-        i = j;
+        // 沒有大括號：只取下一個 token（單一字元 或 控制序列 \name）
+        if(str[i] === '\\'){
+          // 控制序列：\letters
+          let j = i + 1;
+          while(j < str.length && /[A-Za-z]/.test(str[j])) j++;
+          const ctrl = str.slice(i, j); // 包含反斜線
+          out += op + "{" + ctrl + "}";
+          i = j;
+        } else {
+          // 單一字元（單個字母或數字或符號）
+          const token = str[i];
+          const esc = token.replace(/([{}$&%#\\])/g, "\\$1");
+          out += op + "{" + esc + "}";
+          i++;
+        }
       }
     }
     else if(/\s/.test(ch)){
+      // 空白：flush 文字，然後插入 LaTeX 空格
+      flushAcc();
       out += "\\ ";
       i++;
     }
     else {
+      // 一般文字累積，直到遇到空白或 _ 或 ^
       let j = i;
       while(j < str.length && !/[\s_^]/.test(str[j])) j++;
-      const segment = str.slice(i, j)
-        .replace(/([{}$&%#\\])/g, "\\$1");
-      out += "\\text{" + segment + "}";
+      acc += str.slice(i, j);
       i = j;
     }
   }
+
+  flushAcc();
   return out;
 }
 
-// CSV 解析
+// 提示用的 mask（把未保留的字以字面 '_' 顯示）
+// 會把 '_' 轉成 \_ 以避免被當下標
+function latexMask(answer, keep=2){
+  if(answer == null) return "\\text{}";
+  const chars = Array.from(answer);
+  const masked = chars.map((c, idx) => idx < keep ? c : '_').join('');
+  const esc = masked.replace(/([\\{}$&%#])/g, "\\$1").replace(/_/g, "\\_");
+  return "\\text{" + esc + "}";
+}
+
+// 以下為 CSV / quiz 邏輯（保留原來結構）
 function parseCSV(text){
   const lines=text.trim().split("\n").map(r=>r.replace(/^\uFEFF/, ''));
   const data=[];
@@ -178,7 +176,6 @@ function parseCSV(text){
   return data;
 }
 
-// 隨機排序
 function shuffleArray(arr){
   for(let i=arr.length-1;i>0;i--){
     const j=Math.floor(Math.random()*(i+1));
@@ -186,7 +183,6 @@ function shuffleArray(arr){
   }
 }
 
-// 讀 CSV
 async function loadCSV(){
   try{
     const response=await fetch("data/questions.csv");
@@ -197,11 +193,11 @@ async function loadCSV(){
     shuffleArray(allData);
     startQuiz();
   }catch(e){
+    console.error(e);
     document.getElementById("question").innerText="題庫讀取失敗";
   }
 }
 
-// 開始練習
 function startQuiz(useWrong=false){
   quizData=useWrong ? [...wrongQuestions] : [...allData];
   shuffleArray(quizData);
@@ -212,7 +208,6 @@ function startQuiz(useWrong=false){
   showQuestion();
 }
 
-// 顯示題目
 function showQuestion(){
   if(current >= quizData.length){ showEndScreen(); return; }
   const q = quizData[current];
@@ -232,10 +227,9 @@ function showQuestion(){
   hintUsed=false;
   nextQuestionBtn.classList.add("hidden");
   updateProgress();
-  MathJax.typesetPromise([document.getElementById("question"), optionsDiv]);
+  MathJax.typesetPromise([document.getElementById("question"), optionsDiv]).catch(e=>console.error(e));
 }
 
-// 檢查答案
 function checkAnswer(selected){
   const q = quizData[current];
   const buttons = document.querySelectorAll(".option");
@@ -250,27 +244,25 @@ function checkAnswer(selected){
   nextQuestionBtn.classList.remove("hidden");
   nextQuestionBtn.onclick = () => { current++; showQuestion(); };
   updateProgress();
-  MathJax.typesetPromise([document.getElementById("options")]);
+  MathJax.typesetPromise([document.getElementById("options")]).catch(e=>console.error(e));
 }
 
-// 更新進度分數
 function updateProgress(){
   document.getElementById("progress").innerText = `${current+1}/${quizData.length}`;
   document.getElementById("score").innerText = `分數: ${correct}/${answered}`;
   document.getElementById("progressFill").style.width = `${((current+1)/quizData.length)*100}%`;
 }
 
-// 顯示提示
 function showHint(){
   const q = quizData[current];
   if(!q || hintUsed) return;
   hintUsed=true;
-  const hint=q.answer.slice(0,2)+"_".repeat(q.answer.length-2);
-  document.getElementById("question").innerHTML = `$${latexText(q.question)}$ → 提示：$${latexText(hint)}$`;
-  MathJax.typesetPromise([document.getElementById("question")]);
+  // 用 latexMask 產生提示（mask 內的 '_' 會被轉成字面上的 \_）
+  const mask = latexMask(q.answer, 2);
+  document.getElementById("question").innerHTML = `$${latexText(q.question)}$ → 提示：$${mask}$`;
+  MathJax.typesetPromise([document.getElementById("question")]).catch(e=>console.error(e));
 }
 
-// 結束畫面
 function showEndScreen(){
   document.getElementById("quiz").classList.add("hidden");
   document.getElementById("endScreen").classList.remove("hidden");
@@ -282,7 +274,6 @@ function showEndScreen(){
   }else retryBtn.style.display="none";
 }
 
-// 回首頁
 function restart(){ location.reload(); }
 
 loadCSV();
