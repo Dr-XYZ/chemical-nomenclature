@@ -1,15 +1,21 @@
 category,question,answer,option1,option2,option3,option4
 compound,NaCl,Sodium chloride,Sodium chloride,Potassium iodide,Calcium carbonate,Magnesium oxide
-acid,H2SO4,Sulfuric acid,Hydrochloric acid,Nitric acid,Sulfuric acid,Acetic acid
-ion,Fe2+,Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous oxide,Ferric ion
-element,Oxygen,O,O,N,Cl,F
-compound,NaCl,Sodium chloride,Sodium chloride,Potassium iodide,Calcium carbonate,Magnesium oxide
 compound,CaCO3,Calcium carbonate,Calcium carbonate,Sodium carbonate,Magnesium hydroxide,Potassium nitrate
 compound,KNO3,Potassium nitrate,Potassium nitrate,Sodium nitrate,Ammonium sulfate,Magnesium nitrate
+compound,MgO,Magnesium oxide,Magnesium oxide,Magnesium hydroxide,Calcium oxide,Potassium oxide
+compound,Na2CO3,Sodium carbonate,Sodium carbonate,Sodium bicarbonate,Calcium carbonate,Potassium carbonate
 acid,HCl,Hydrochloric acid,Hydrochloric acid,Sulfuric acid,Nitric acid,Acetic acid
-acid,H2SO4,Sulfuric acid,Hydrochloric acid,Nitric acid,Sulfuric acid,Carbonic acid
-acid,HNO3,Nitric acid,Nitric acid,Phosphoric acid,Acetic acid,Sulfurous acid
-ion,Fe2+,Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous oxide,Ferric ion
-ion,SO4^2-,Sulfate ion,Sulfite ion,Sulfate ion,Carbonate ion,Nitrate ion
-element,O,O,O,N,Cl,F
-element,Cl,Chlorine,Oxygen,Chlorine,Carbon,Fluorine
+acid,H2SO4,Sulfuric acid,Sulfuric acid,Hydrochloric acid,Nitric acid,Carbonic acid
+acid,HNO3,Nitric acid,Nitric acid,Hydrochloric acid,Phosphoric acid,Sulfurous acid
+acid,CH3COOH,Acetic acid,Acetic acid,Formic acid,Citric acid,Sulfuric acid
+acid,H3PO4,Phosphoric acid,Phosphoric acid,Nitric acid,Sulfuric acid,Hydrochloric acid
+ion,Fe2+,Iron(II) ion,Iron(II) ion,Iron(III) ion,Ferrous ion,Ferric ion
+ion,Fe3+,Iron(III) ion,Iron(III) ion,Iron(II) ion,Ferric ion,Ferrous ion
+ion,SO4^2-,Sulfate ion,Sulfate ion,Sulfite ion,Carbonate ion,Nitrate ion
+ion,NO3-,Nitrate ion,Nitrate ion,Sulfate ion,Chloride ion,Phosphate ion
+ion,Cl-,Chloride ion,Chloride ion,Bromide ion,Iodide ion,Nitrate ion
+element,H,Hydrogen,Hydrogen,Oxygen,Carbon,Nitrogen
+element,O,Oxygen,Oxygen,Nitrogen,Chlorine,Hydrogen
+element,C,Carbon,Carbon,Oxygen,Carbon dioxide,Calcium
+element,N,Nitrogen,Nitrogen,Oxygen,Carbon,Hydrogen
+element,Na,Sodium,Sodium,Potassium,Calcium,Magnesium
