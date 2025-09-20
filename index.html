@@ -106,7 +106,7 @@ function startQuiz(useWrong=false){
 function showQuestion(){
   if(current >= quizData.length){ showEndScreen(); return; }
   const q = quizData[current];
-  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`; // MathJax inline
+  document.getElementById("question").innerHTML = `\$begin:math:text$${q.question}\\$end:math:text$`; 
   const optionsDiv = document.getElementById("options");
   optionsDiv.innerHTML = "";
   const opts = [...q.options];
@@ -114,7 +114,7 @@ function showQuestion(){
   opts.forEach(opt => {
     const btn = document.createElement("button");
     btn.className = "option";
-    btn.dataset.value = opt;  // 用 dataset 儲存原始答案
+    btn.dataset.value = opt;  // 原始值保留
     btn.innerHTML = `\$begin:math:text$${opt}\\$end:math:text$`; 
     btn.onclick = () => checkAnswer(opt);
     optionsDiv.appendChild(btn);
