@@ -205,62 +205,60 @@
       }
 
       // 產生 SVG 文字，並補上背景與 xml namespace
-      function svgToString(svgEl, options={background:null, scale:1}) {
-        const clone = svgEl.cloneNode(true);
-        // 移除不必要的 transform（因為我們要把 scale 納入 canvas）
-        clone.style.transform = '';
-        clone.removeAttribute('style');
+function svgToString(svgEl, options={background:null, scale:1, padding:20}) {
+  const clone = svgEl.cloneNode(true);
+  clone.style.transform = '';
+  clone.removeAttribute('style');
 
-        // 若有 viewBox，使用它；沒有則以 width/height
-        const bbox = svgEl.getBBox ? svgEl.getBBox() : null;
-        let width = svgEl.getAttribute('width');
-        let height = svgEl.getAttribute('height');
-        if(!width && bbox){ width = bbox.width; height = bbox.height; }
-        // set attributes to ensure correct size
-        if(!clone.getAttribute('xmlns')) clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
-        if(!clone.getAttribute('xmlns:xlink')) clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
+  const scale = options.scale || 1;
+  const padding = options.padding || 0;
 
-        // 如果使用 scaling，調整 viewBox 或 width/height
-        const scale = options.scale || 1;
-        if(clone.getAttribute('viewBox')) {
-          // keep viewBox; canvas scaling will handle size
-        } else if(width && height) {
-          clone.setAttribute('width', parseFloat(width) * scale);
-          clone.setAttribute('height', parseFloat(height) * scale);
-        }
+  // 確保有 namespace
+  if(!clone.getAttribute('xmlns')) clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
 
-        // 補背景矩形（如果指定非透明背景）
-        if(options.background) {
-          const bgRect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-          // determine width/height for bgRect
-          const vb = clone.getAttribute('viewBox');
-          if(vb){
-            const parts = vb.split(/\s+/).map(Number);
-            const w = parts[2], h = parts[3];
-            bgRect.setAttribute('x',0);
-            bgRect.setAttribute('y',0);
-            bgRect.setAttribute('width', w * scale);
-            bgRect.setAttribute('height', h * scale);
-          } else {
-            const w = clone.getAttribute('width') || 0;
-            const h = clone.getAttribute('height') || 0;
-            bgRect.setAttribute('x',0); bgRect.setAttribute('y',0);
-            bgRect.setAttribute('width', w); bgRect.setAttribute('height', h);
-          }
-          bgRect.setAttribute('fill', options.background);
-          // 插到最前面
-          clone.insertBefore(bgRect, clone.firstChild);
-        }
+  // 取得原本 viewBox 或寬高
+  let vb = clone.getAttribute('viewBox');
+  if (vb) {
+    const parts = vb.split(/\s+/).map(Number);
+    const [x, y, w, h] = parts;
+    // 調整 viewBox，往外擴 padding
+    clone.setAttribute('viewBox', `${x - padding} ${y - padding} ${w + 2*padding} ${h + 2*padding}`);
+  } else {
+    let w = parseFloat(clone.getAttribute('width')) || svgEl.getBBox().width;
+    let h = parseFloat(clone.getAttribute('height')) || svgEl.getBBox().height;
+    w += 2 * padding;
+    h += 2 * padding;
+    clone.setAttribute('width', w * scale);
+    clone.setAttribute('height', h * scale);
+  }
 
-        // Serialize
-        const serializer = new XMLSerializer();
-        let svgString = serializer.serializeToString(clone);
-        // Ensure proper header for data URL
-        if(!svgString.match(/^<\?xml/)) {
-          svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
-        }
-        return svgString;
-      }
+  // 若有背景色，加上背景矩形，記得比原圖大 padding
+  if (options.background) {
+    const bgRect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    if (clone.getAttribute('viewBox')) {
+      const vb2 = clone.getAttribute('viewBox').split(/\s+/).map(Number);
+      bgRect.setAttribute('x', vb2[0]);
+      bgRect.setAttribute('y', vb2[1]);
+      bgRect.setAttribute('width', vb2[2]);
+      bgRect.setAttribute('height', vb2[3]);
+    } else {
+      bgRect.setAttribute('x', 0);
+      bgRect.setAttribute('y', 0);
+      bgRect.setAttribute('width', parseFloat(clone.getAttribute('width')));
+      bgRect.setAttribute('height', parseFloat(clone.getAttribute('height')));
+    }
+    bgRect.setAttribute('fill', options.background);
+    clone.insertBefore(bgRect, clone.firstChild);
+  }
+
+  // 轉成字串
+  const serializer = new XMLSerializer();
+  let svgString = serializer.serializeToString(clone);
+  if(!svgString.startsWith('<?xml')) {
+    svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+  }
+  return svgString;
+}
 
       // Convert SVG -> PNG via Canvas, 返回 dataURL
       async function svgToPngDataUrl(svgEl, scale=1, background=null) {
