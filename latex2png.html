@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LaTeX → 圖片（PNG / SVG）</title>
+
+  <!-- 美化字體與圖示（Google Font & simple icons via SVG） -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#9aa4b2;
+      --accent1:#7c5cff;
+      --accent2:#00d4ff;
+      --glass: rgba(255,255,255,0.03);
+      font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#071123);color:#e6eef8;}
+    .wrap{max-width:1100px;margin:32px auto;padding:20px;display:grid;grid-template-columns:1fr 520px;gap:20px;}
+    @media (max-width:980px){ .wrap{grid-template-columns:1fr; padding:12px;} }
+
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(3,7,18,0.6);border:1px solid rgba(255,255,255,0.03);}
+    header.h{display:flex;gap:12px;align-items:center;margin-bottom:12px;}
+    header.h h1{font-size:18px;margin:0}
+    header.h p{margin:0;color:var(--muted);font-size:13px}
+
+    /* 編輯區 */
+    .controls{display:flex;flex-direction:column;gap:12px}
+    textarea#tex{width:100%;min-height:260px;background:transparent;border:1px dashed rgba(255,255,255,0.04);padding:12px;border-radius:8px;color:inherit;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Noto Sans Mono", monospace;font-size:14px;resize:vertical}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    label.option{font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center}
+    select,input[type="number"],input[type="color"]{
+      background:var(--glass);border:1px solid rgba(255,255,255,0.03);padding:8px;border-radius:8px;color:inherit;
+    }
+    .btn{
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#021023;border:none;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 18px rgba(124,92,255,0.18);
+    }
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);box-shadow:none;color:var(--muted)}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* 預覽區 */
+    .previewWrap{display:flex;flex-direction:column;gap:12px}
+    .previewWindow{min-height:220px;display:flex;align-items:center;justify-content:center;padding:18px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.02);overflow:auto}
+    .previewWindow .math{display:inline-block}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+
+    footer.note{font-size:12px;color:var(--muted);margin-top:10px}
+
+    /* small helpers */
+    .flex-spread{display:flex;justify-content:space-between;align-items:center}
+    .small{font-size:13px}
+    .kbd{padding:3px 8px;border-radius:6px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.02);font-family:ui-monospace, monospace}
+  </style>
+
+  <!-- MathJax (tex -> SVG) -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header class="h">
+        <div>
+          <h1>LaTeX → 圖片產生器</h1>
+          <p class="muted">輸入 LaTeX，預覽後可匯出 PNG 或 SVG。支援顯示/行內模式、縮放、背景與透明背景。</p>
+        </div>
+      </header>
+
+      <div class="controls">
+        <div class="row">
+          <label class="option">模式：
+            <select id="mode">
+              <option value="display">\(\displaystyle\) 顯示模式（置中、獨立一行）</option>
+              <option value="inline">行內模式 \(a+b\)</option>
+            </select>
+          </label>
+
+          <label class="option">縮放：
+            <input id="scale" type="number" min="0.5" max="5" step="0.1" value="1.4" style="width:86px">
+          </label>
+
+          <label class="option">背景色：
+            <input id="bgcolor" type="color" value="#ffffff">
+          </label>
+
+          <label class="option"><input id="transparent" type="checkbox"> 透明背景</label>
+        </div>
+
+        <textarea id="tex" spellcheck="false" placeholder="在此輸入你的 LaTeX（例如： \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}）">
+\displaystyle \int_0^\infty e^{-x^2}\,dx = \frac{\sqrt{\pi}}{2}
+        </textarea>
+
+        <div class="row">
+          <button class="btn" id="renderBtn">立即渲染</button>
+          <button class="btn ghost" id="downloadPng">下載 PNG</button>
+          <button class="btn ghost" id="downloadSvg">下載 SVG</button>
+          <button class="btn ghost" id="copyPng">複製 PNG 到剪貼簿</button>
+          <div style="flex:1"></div>
+          <div class="muted small">提示：可用 <span class="kbd">Ctrl/Cmd + A</span> 選全部，或拖曳更換背景色。</div>
+        </div>
+      </div>
+
+      <footer class="note">本工具完全在本機運行，無資料上傳到伺服器。若要大量或自動化使用，可將此檔部署到內部網路。</footer>
+    </div>
+
+    <div class="card previewWrap">
+      <div class="flex-spread">
+        <div>
+          <strong>即時預覽</strong>
+          <div class="muted small">MathJax SVG 輸出，品質良好，適合匯出至圖片或論文圖示。</div>
+        </div>
+        <div class="muted small">輸出比例 <span id="previewScaleLabel">1.4×</span></div>
+      </div>
+
+      <div id="preview" class="previewWindow" aria-live="polite">
+        <div id="mathContainer" class="math"></div>
+      </div>
+
+      <div class="actions">
+        <div class="muted small">渲染狀態： <span id="status">尚未渲染</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 等待 MathJax 初始化
+    window.addEventListener('load', ()=> {
+      const texArea = document.getElementById('tex');
+      const renderBtn = document.getElementById('renderBtn');
+      const mathContainer = document.getElementById('mathContainer');
+      const preview = document.getElementById('preview');
+      const status = document.getElementById('status');
+      const scaleInput = document.getElementById('scale');
+      const modeSelect = document.getElementById('mode');
+      const bgcolorInput = document.getElementById('bgcolor');
+      const transparentCheck = document.getElementById('transparent');
+      const downloadPngBtn = document.getElementById('downloadPng');
+      const downloadSvgBtn = document.getElementById('downloadSvg');
+      const copyPngBtn = document.getElementById('copyPng');
+      const previewScaleLabel = document.getElementById('previewScaleLabel');
+
+      previewScaleLabel.textContent = scaleInput.value + '×';
+
+      // 用 MathJax 做渲染
+      async function renderMath() {
+        status.textContent = '渲染中…';
+        const tex = texArea.value.trim();
+        mathContainer.innerHTML = ''; // 清除
+        if(!tex){
+          status.textContent = '請輸入 LaTeX';
+          return;
+        }
+
+        // 根據模式包裝 LaTeX（MathJax 會自動處理）
+        const mode = modeSelect.value;
+        // 使用 MathJax API 將 TeX 轉為 SVG 字串（直接輸出到 container）
+        try {
+          // MathJax.tex2svgPromise -> 產生一個 <svg> 組合在一個 <mjx-container>
+          const display = (mode === 'display');
+          const node = await MathJax.tex2svgPromise(tex, {display: display});
+          // node 是一個包含 <svg> 的 DocumentFragment
+          // 將 node 放入 mathContainer
+          mathContainer.appendChild(node);
+          // 調整 SVG 的顯示大小（scale）
+          applyScale();
+          status.textContent = '渲染完成';
+        } catch (err) {
+          console.error(err);
+          mathContainer.textContent = '渲染錯誤：' + (err.message || err);
+          status.textContent = '渲染失敗';
+        }
+      }
+
+      function applyScale() {
+        const s = parseFloat(scaleInput.value) || 1;
+        previewScaleLabel.textContent = s + '×';
+        // MathJax 的 SVG 在 container 裡，尋找第一個 svg
+        const svg = mathContainer.querySelector('svg');
+        if(!svg) return;
+        // reset
+        svg.style.width = 'auto';
+        svg.style.height = 'auto';
+        // 使用 transform scale（但為了匯出圖片，我們會根據 viewBox 改變 canvas）
+        svg.style.transform = `scale(${s})`;
+        svg.style.transformOrigin = 'left top';
+        // 調整 preview container 背景
+        if(transparentCheck.checked) {
+          preview.style.background = 'transparent';
+        } else {
+          preview.style.background = bgcolorInput.value;
+        }
+
+        // 讓包裹區稍微 padding
+        svg.style.display = 'inline-block';
+      }
+
+      // 取出 SVG 並輸出為 dataURL (svg/png)
+      function getSvgElement() {
+        const svg = mathContainer.querySelector('svg');
+        if(!svg) return null;
+        // 由 MathJax 產生的 svg 可能在 <svg ...> 內被包在 mjx-container
+        return svg;
+      }
+
+      // 產生 SVG 文字，並補上背景與 xml namespace
+      function svgToString(svgEl, options={background:null, scale:1}) {
+        const clone = svgEl.cloneNode(true);
+        // 移除不必要的 transform（因為我們要把 scale 納入 canvas）
+        clone.style.transform = '';
+        clone.removeAttribute('style');
+
+        // 若有 viewBox，使用它；沒有則以 width/height
+        const bbox = svgEl.getBBox ? svgEl.getBBox() : null;
+        let width = svgEl.getAttribute('width');
+        let height = svgEl.getAttribute('height');
+        if(!width && bbox){ width = bbox.width; height = bbox.height; }
+        // set attributes to ensure correct size
+        if(!clone.getAttribute('xmlns')) clone.setAttribute('xmlns','http://www.w3.org/2000/svg');
+        if(!clone.getAttribute('xmlns:xlink')) clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
+
+        // 如果使用 scaling，調整 viewBox 或 width/height
+        const scale = options.scale || 1;
+        if(clone.getAttribute('viewBox')) {
+          // keep viewBox; canvas scaling will handle size
+        } else if(width && height) {
+          clone.setAttribute('width', parseFloat(width) * scale);
+          clone.setAttribute('height', parseFloat(height) * scale);
+        }
+
+        // 補背景矩形（如果指定非透明背景）
+        if(options.background) {
+          const bgRect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          // determine width/height for bgRect
+          const vb = clone.getAttribute('viewBox');
+          if(vb){
+            const parts = vb.split(/\s+/).map(Number);
+            const w = parts[2], h = parts[3];
+            bgRect.setAttribute('x',0);
+            bgRect.setAttribute('y',0);
+            bgRect.setAttribute('width', w * scale);
+            bgRect.setAttribute('height', h * scale);
+          } else {
+            const w = clone.getAttribute('width') || 0;
+            const h = clone.getAttribute('height') || 0;
+            bgRect.setAttribute('x',0); bgRect.setAttribute('y',0);
+            bgRect.setAttribute('width', w); bgRect.setAttribute('height', h);
+          }
+          bgRect.setAttribute('fill', options.background);
+          // 插到最前面
+          clone.insertBefore(bgRect, clone.firstChild);
+        }
+
+        // Serialize
+        const serializer = new XMLSerializer();
+        let svgString = serializer.serializeToString(clone);
+        // Ensure proper header for data URL
+        if(!svgString.match(/^<\?xml/)) {
+          svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+        }
+        return svgString;
+      }
+
+      // Convert SVG -> PNG via Canvas, 返回 dataURL
+      async function svgToPngDataUrl(svgEl, scale=1, background=null) {
+        const svgString = svgToString(svgEl, {scale: scale, background: background});
+        // Create a blob URL
+        const svgBlob = new Blob([svgString], {type: 'image/svg+xml;charset=utf-8'});
+        const url = URL.createObjectURL(svgBlob);
+
+        // load into Image
+        const img = new Image();
+        // important for cross-browser fonts: set crossOrigin to 'anonymous' may be needed if fonts loaded CORS enabled
+        img.crossOrigin = 'anonymous';
+        return new Promise((resolve, reject) => {
+          img.onload = () => {
+            // create canvas with image natural size (account for scale)
+            const w = img.naturalWidth || img.width;
+            const h = img.naturalHeight || img.height;
+            const canvas = document.createElement('canvas');
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            // white background (if needed) already baked into svg if background param provided
+            ctx.drawImage(img, 0, 0);
+            try {
+              const dataUrl = canvas.toDataURL('image/png');
+              URL.revokeObjectURL(url);
+              resolve(dataUrl);
+            } catch (err) {
+              reject(err);
+            }
+          };
+          img.onerror = (e) => {
+            URL.revokeObjectURL(url);
+            reject(new Error('載入 SVG 轉換為影像失敗'));
+          };
+          img.src = url;
+        });
+      }
+
+      // Download helper
+      function downloadDataUrl(dataUrl, filename) {
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      // 事件
+      renderBtn.addEventListener('click', ()=> {
+        renderMath();
+      });
+
+      // 自動 render（輸入時稍做 debounce）
+      let typingTimer = null;
+      texArea.addEventListener('input', ()=> {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(()=>{ renderMath(); }, 500);
+      });
+
+      // 選項變更立即應用（不強制重新 MathJax 重新解析，僅影響顯示/背景/scale）
+      scaleInput.addEventListener('input', ()=> {
+        applyScale();
+      });
+      bgcolorInput.addEventListener('input', ()=> {
+        if(!transparentCheck.checked) preview.style.background = bgcolorInput.value;
+      });
+      transparentCheck.addEventListener('change', ()=> {
+        applyScale();
+      });
+      modeSelect.addEventListener('change', ()=> {
+        renderMath();
+      });
+
+      // 下載 SVG（直接以序列化後的字串）
+      downloadSvgBtn.addEventListener('click', ()=> {
+        const svg = getSvgElement();
+        if(!svg){ alert('找不到 SVG，請先渲染。'); return; }
+        // 取得文字（含背景視情況）
+        const background = transparentCheck.checked ? null : bgcolorInput.value;
+        const svgStr = svgToString(svg, {background: background, scale: parseFloat(scaleInput.value)||1});
+        const blob = new Blob([svgStr], {type: 'image/svg+xml;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        downloadDataUrl(url, 'latex.svg');
+        setTimeout(()=>URL.revokeObjectURL(url), 1500);
+      });
+
+      // 下載 PNG
+      downloadPngBtn.addEventListener('click', async ()=> {
+        const svg = getSvgElement();
+        if(!svg){ alert('找不到 SVG，請先渲染。'); return; }
+        status.textContent = '產生 PNG…';
+        try {
+          const scale = parseFloat(scaleInput.value) || 1;
+          const background = transparentCheck.checked ? null : bgcolorInput.value;
+          const dataUrl = await svgToPngDataUrl(svg, scale, background);
+          downloadDataUrl(dataUrl, 'latex.png');
+          status.textContent = 'PNG 已下載';
+        } catch (err) {
+          console.error(err);
+          alert('轉 PNG 時發生錯誤：' + err.message);
+          status.textContent = '轉 PNG 失敗';
+        }
+      });
+
+      // 複製 PNG 到剪貼簿（使用 Clipboard API）
+      copyPngBtn.addEventListener('click', async ()=> {
+        const svg = getSvgElement();
+        if(!svg){ alert('找不到 SVG，請先渲染。'); return; }
+        status.textContent = '複製到剪貼簿…';
+        try {
+          const scale = parseFloat(scaleInput.value) || 1;
+          const background = transparentCheck.checked ? null : bgcolorInput.value;
+          const dataUrl = await svgToPngDataUrl(svg, scale, background);
+          // 轉成 blob
+          const res = await fetch(dataUrl);
+          const blob = await res.blob();
+          // ClipboardItem
+          const item = new ClipboardItem({'image/png': blob});
+          await navigator.clipboard.write([item]);
+          status.textContent = '已複製到剪貼簿';
+          alert('已將圖片複製到剪貼簿，可以在聊天或文件貼上。');
+        } catch (err) {
+          console.error(err);
+          alert('複製到剪貼簿失敗：' + (err.message || err));
+          status.textContent = '複製失敗';
+        }
+      });
+
+      // 首次自動渲染
+      renderMath();
+    });
+  </script>
+</body>
+</html>
